@@ -1,0 +1,371 @@
+<h3></h3>
+
+<!-- div row para pesquisa -->
+<!--<div class="row">-->
+
+    <div ng-hide="Avaliacao.inserting || Avaliacao.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class="">
+        <div class="form-group">
+            <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
+            <input type="text" ng-model="vars.search" cronapp-filter="metodo1;" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="Avaliacao" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
+        </div>
+    </div>
+
+<div data-component="crn-button" id="crn-button-564202" class="">
+    <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="Avaliacao.startInserting()" ng-hide="Avaliacao.inserting || Avaliacao.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<!-- fim div row para pesquisa -->
+<!--</div>-->
+
+<datasource filter="" name="Avaliacao" entity="api/cronapi/crud/app.entity.Avaliacao" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Avaliacao">
+    <div crn-datasource="Avaliacao" class="" ng-hide="Avaliacao.editing || Avaliacao.inserting">
+        <table class="table  table-bordered table-hover table-striped">
+            <thead>
+            <tr class="table-header">
+                <th class="">
+                    <div class="">Metodo 3</div>
+                </th>
+                <th class="">
+                    <div class="">Evento</div>
+                </th>
+                <th class="">
+                    <div class="">{{"template.crud.actions" | translate}}</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-content" ng-repeat="rowData in datasource.data">
+                <td class="">
+                    <div class="">
+                                {{rowData.metodo3  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.evento.data}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="table-footer-controls">
+            <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+        </div>
+    </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-Avaliacao">
+    <div class="form" ng-show="Avaliacao.editing || Avaliacao.inserting">
+        <form crn-datasource="Avaliacao" class="">
+            <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+            <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+                <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <br/>
+            <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+
+                <div data-component="crn-textinput" id="crn-textinput-metodo1" class="">
+                    <div class="form-group">
+                        <label for="textinput-metodo1" class="">Metodo 1</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.metodo1"
+                                            class="form-control"
+                                            id="textinput-metodo1"
+                                            placeholder="Metodo 1"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-metodo2" class="">
+                    <div class="form-group">
+                        <label for="textinput-metodo2" class="">Metodo 2</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.metodo2"
+                                            class="form-control"
+                                            id="textinput-metodo2"
+                                            placeholder="Metodo 2"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-metodo3" class="">
+                    <div class="form-group">
+                        <label for="textinput-metodo3" class="">Metodo 3</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.metodo3"
+                                            class="form-control"
+                                            id="textinput-metodo3"
+                                            placeholder="Metodo 3"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-metodo4" class="">
+                    <div class="form-group">
+                        <label for="textinput-metodo4" class="">Metodo 4</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.metodo4"
+                                            class="form-control"
+                                            id="textinput-metodo4"
+                                            placeholder="Metodo 4"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-metodo5" class="">
+                    <div class="form-group">
+                        <label for="textinput-metodo5" class="">Metodo 5</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.metodo5"
+                                            class="form-control"
+                                            id="textinput-metodo5"
+                                            placeholder="Metodo 5"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-hinario" class="">
+                    <div class="form-group">
+                        <label for="textinput-hinario" class="">Hinario</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.hinario"
+                                            class="form-control"
+                                            id="textinput-hinario"
+                                            placeholder="Hinario"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-solfejo" class="">
+                    <div class="form-group">
+                        <label for="textinput-solfejo" class="">Solfejo</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.solfejo"
+                                            class="form-control"
+                                            id="textinput-solfejo"
+                                            placeholder="Solfejo"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-conceitoTeoria" class="">
+                    <div class="form-group">
+                        <label for="textinput-conceitoTeoria" class="">Conceito Teoria</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.conceitoTeoria"
+                                            class="form-control"
+                                            id="textinput-conceitoTeoria"
+                                            placeholder="Conceito Teoria"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-conceitoHino" class="">
+                    <div class="form-group">
+                        <label for="textinput-conceitoHino" class="">Conceito Hino</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.conceitoHino"
+                                            class="form-control"
+                                            id="textinput-conceitoHino"
+                                            placeholder="Conceito Hino"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-conceitoMetodo" class="">
+                    <div class="form-group">
+                        <label for="textinput-conceitoMetodo" class="">Conceito Metodo</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.conceitoMetodo"
+                                            class="form-control"
+                                            id="textinput-conceitoMetodo"
+                                            placeholder="Conceito Metodo"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-conceitoFinal" class="">
+                    <div class="form-group">
+                        <label for="textinput-conceitoFinal" class="">Conceito Final</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.conceitoFinal"
+                                            class="form-control"
+                                            id="textinput-conceitoFinal"
+                                            placeholder="Conceito Final"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-obs" class="">
+                    <div class="form-group">
+                        <label for="textinput-obs" class="">Obs</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.obs"
+                                            class="form-control"
+                                            id="textinput-obs"
+                                            placeholder="Obs"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-statusFinal" class="">
+                    <div class="form-group">
+                        <label for="textinput-statusFinal" class="">Status Final</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Avaliacao.active.statusFinal"
+                                            class="form-control"
+                                            id="textinput-statusFinal"
+                                            placeholder="Status Final"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Tipoavaliacao" entity="api/cronapi/crud/app.entity.TipoAvaliacao" keys="id" class="" dependent-by="{{Avaliacao}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-tipoAvaliacao" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-tipoAvaliacao" class="">TipoAvaliacao</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Avaliacao.active.tipoAvaliacao" crn-datasource="Tipoavaliacao" class="crn-select" id="combobox-dynamic-tipoAvaliacao" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.nome}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Avaliadores" entity="api/cronapi/crud/app.entity.Avaliadores" keys="id" class="" dependent-by="{{Avaliacao}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-avaliadores" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-avaliadores" class="">Avaliadores</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Avaliacao.active.avaliadores" crn-datasource="Avaliadores" class="crn-select" id="combobox-dynamic-avaliadores" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.nome}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Evento" entity="api/cronapi/crud/app.entity.Evento" keys="id" class="" dependent-by="{{Avaliacao}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-evento" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-evento" class="">Evento</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Avaliacao.active.evento" crn-datasource="Evento" class="crn-select" id="combobox-dynamic-evento" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.data}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.data}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                <!-- NtoN  -->
+                <!-- NtoN  end-->
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <!-- OneToN -->
+                <!-- OneToOne  end -->
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+<!-- OneToOne modal -->
+<!-- OneToOne modal end-->
