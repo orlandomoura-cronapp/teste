@@ -2974,6 +2974,75 @@
           "text": ""
         }
       }
+    },
+    {
+      "type": "uml.Class",
+      "name": "Class2",
+      "attributes": [],
+      "methods": [],
+      "position": {
+        "x": 894,
+        "y": 283
+      },
+      "size": {
+        "width": 90.15625,
+        "height": 65.08664798736572
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "queries": null,
+      "tableName": null,
+      "realName": "",
+      "tableScheme": null,
+      "generateView": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8",
+      "fields": [],
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 37,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 30,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 30,
+          "transform": "translate(0,80)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "Class2",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": ""
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 73.15625,
+          "font-size": 11,
+          "text": ""
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": ""
+        }
+      }
     }
   ],
   "selectedGroup": "1d7f906f-a526-482d-aaf4-08d227ae8c18",
@@ -3000,6 +3069,7 @@
         "1df87f56-c5ba-47f5-8e68-82931f49b989",
         "47d3cff4-a9ee-404c-b32a-db395dda5500",
         "c36b113b-b950-429e-b049-64efac91832b",
+        "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8",
         "8f6bd56f-3788-480f-8058-2b7b06857cf7",
         "ef9aeee7-466b-412a-8418-9773fc73f1ac",
         "71c14e9d-6997-4977-881f-b08c88c00af0",
