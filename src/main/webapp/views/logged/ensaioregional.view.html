@@ -1,0 +1,535 @@
+<h3></h3>
+
+<!-- div row para pesquisa -->
+<!--<div class="row">-->
+
+    <div ng-hide="ensaioRegional.inserting || ensaioRegional.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class="">
+        <div class="form-group">
+            <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
+            <input type="text" ng-model="vars.search" cronapp-filter="encLocais;" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="ensaioRegional" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
+        </div>
+    </div>
+
+<div data-component="crn-button" id="crn-button-564202" class="">
+    <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="ensaioRegional.startInserting()" ng-hide="ensaioRegional.inserting || ensaioRegional.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<!-- fim div row para pesquisa -->
+<!--</div>-->
+
+<datasource filter="" name="ensaioRegional" entity="api/cronapi/crud/app.entity.ensaioRegional" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-ensaioRegional">
+    <div crn-datasource="ensaioRegional" class="" ng-hide="ensaioRegional.editing || ensaioRegional.inserting">
+        <table class="table  table-bordered table-hover table-striped">
+            <thead>
+            <tr class="table-header">
+                <th class="active">
+                    <div class="">Data</div>
+                </th>
+                
+                <th class="">
+                    <div class="">Comum</div>
+                </th>
+                <th class="">
+                    <div class="">Horário</div>
+                </th>
+                <th class="">
+                    <div class="">{{"template.crud.actions" | translate}}</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-content" ng-repeat="rowData in datasource.data">
+                <td class="active">
+                    <div class="">
+                                {{rowData.data | mask:'DD/MM/YYYY' }}
+                    </div>
+                </td>
+                
+                <td class="">
+                    <div class="">
+                            {{rowData.comum.nome}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.horario | mask:'time'}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="table-footer-controls">
+            <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+        </div>
+    </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-ensaioRegional">
+    <div class="form" ng-show="ensaioRegional.editing || ensaioRegional.inserting">
+        <form crn-datasource="ensaioRegional" class="">
+            <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+            <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+                <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <br>
+            <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+
+                <div data-component="crn-textinput" id="crn-textinput-data" class="col-md-2 col-sm-12">
+                    <div class="form-group">
+                        <label for="textinput-data" class="">Data</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.data" class="form-control" id="textinput-data" placeholder="Data" mask="DD/MM/YYYY" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-horario" class="col-md-2 col-sm-12">
+                    <div class="form-group">
+                        <label for="textinput-horario" class="">Horário</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="time" ng-model="ensaioRegional.active.horario" class="form-control" id="textinput-horario" placeholder="Horário" mask="HH:mm" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><datasource name="Comum" entity="api/cronapi/crud/app.entity.Comum" keys="id" class="" dependent-by="{{ensaioRegional}}"></datasource><div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-comum" class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-comum" class="">Comum</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="ensaioRegional.active.comum" crn-datasource="Comum" class="crn-select" id="combobox-dynamic-comum" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.nome}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-palavra" class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="textinput-palavra" class="">Palavra</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.palavra" class="form-control" id="textinput-palavra" placeholder="Palavra" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-atendente" class="col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label for="textinput-atendente" class="">Atendente</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.atendente" class="form-control" id="textinput-atendente" placeholder="Atendente" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-regenteUm" class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <label for="textinput-regenteUm" class="">Regente Um</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.regenteUm" class="form-control" id="textinput-regenteUm" placeholder="Regente Um" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-regenteDois" class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <label for="textinput-regenteDois" class="">Regente Dois</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.regenteDois" class="form-control" id="textinput-regenteDois" placeholder="Regente Dois" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                
+
+                <h1 class="lead text-center component-holder col-sm-12  col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title-47495">Cordas</h1><div data-component="crn-textinput" id="crn-textinput-violinos" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-violinos" class="">Violinos</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.violinos" class="form-control" id="textinput-violinos" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><div data-component="crn-textinput" id="crn-textinput-violas" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-violas" class="">Violas</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.violas" class="form-control" id="textinput-violas" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><div data-component="crn-textinput" id="crn-textinput-violoncelos" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-violoncelos" class="">Violoncelos</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.violoncelos" class="form-control" id="textinput-violoncelos" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                
+
+                
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title99091">Teclado</h1><div data-component="crn-textinput" id="crn-textinput-acordeons" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-acordeons" class="">Acordeons</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.acordeons" class="form-control" id="textinput-acordeons" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title89261">Madeiras</h1><div data-component="crn-textinput" id="crn-textinput-flautas" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-flautas" class="">Flautas</label>
+ <!-- else for if !model.hasCronappFramework() -->
+ <div>&nbsp;</div>
+                                <input type="integer" ng-model="ensaioRegional.active.flautas" class="form-control" id="textinput-flautas" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-clarinetas" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-clarinetas" class="">Clarinetas</label>
+                         <div>&nbsp;</div>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.clarinetas" class="form-control" id="textinput-clarinetas" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-clarones" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-clarones" class="">Clarones</label>
+                         <div>&nbsp;</div>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.clarones" class="form-control" id="textinput-clarones" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-oboes" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-oboes" class="">Oboés</label>
+ <!-- else for if !model.hasCronappFramework() -->
+  <div>&nbsp;</div>
+                                <input type="integer" ng-model="ensaioRegional.active.oboes" class="form-control" id="textinput-oboes" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-fagotes" class="col-sm-12 col-md-1">
+                    <div class="form-group form-group-flex">
+                        <label for="textinput-fagotes" class="">Fagotes</label>
+ <!-- else for if !model.hasCronappFramework() -->
+    <p style="height: 16px;"></p>   
+                                <input type="integer" ng-model="ensaioRegional.active.fagotes" class="form-control" id="textinput-fagotes" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><div style="margin-top:25" data-component="crn-textinput" id="crn-textinput-saxSoprano" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxSoprano" class="">Sax Soprano </label>
+   <p style="height: 1px;"></p>                     
+                    <div>
+   </div>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxSoprano" class="form-control" id="textinput-saxSoprano" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                
+
+                <div data-component="crn-textinput" id="crn-textinput-saxSopranoCurvo" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxSopranoCurvo" class="">Sax Soprano Curvo</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxSopranoCurvo" class="form-control" id="textinput-saxSopranoCurvo" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-saxAlto" class="col-sm-12  col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxAlto" class="">Sax Alto</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxAlto" class="form-control" id="textinput-saxAlto" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-saxTenor" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxTenor" class="">Sax Tenor</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxTenor" class="form-control" id="textinput-saxTenor" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-saxBaritono" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxBaritono" class="">Sax Barítono</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxBaritono" class="form-control" id="textinput-saxBaritono" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-saxBaixo" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxBaixo" class="">Sax Baixo</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxBaixo" class="form-control" id="textinput-saxBaixo" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title32241">Metais</h1><div data-component="crn-textinput" id="crn-textinput-saxHorns" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-saxHorns" class="">Sax Horns</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.saxHorns" class="form-control" id="textinput-saxHorns" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-trompetes" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-trompetes" class="">Trompetes</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.trompetes" class="form-control" id="textinput-trompetes" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-cornets" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-cornets" class="">Cornets</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.cornets" class="form-control" id="textinput-cornets" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-pockets" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-pockets" class="">Pockets</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.pockets" class="form-control" id="textinput-pockets" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-trompas" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-trompas" class="">Trompas</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.trompas" class="form-control" id="textinput-trompas" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-trombones" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-trombones" class="">Trombones</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.trombones" class="form-control" id="textinput-trombones" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-flugelhorn" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-flugelhorn" class="">Flugelhorn</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.flugelhorn" class="form-control" id="textinput-flugelhorn" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-trombonitos" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-trombonitos" class="">Trombonitos</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.trombonitos" class="form-control" id="textinput-trombonitos" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-baritonoVertical" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-baritonoVertical" class="">Barítono Vertical</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.baritonoVertical" class="form-control" id="textinput-baritonoVertical" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-bombardinos" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-bombardinos" class="">Bombardinos</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.bombardinos" class="form-control" id="textinput-bombardinos" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-bombardao" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-bombardao" class="">Bombardão</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.bombardao" class="form-control" id="textinput-bombardao" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-tubaSinfonica" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-tubaSinfonica" class="">Tuba Sinfônica</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.tubaSinfonica" class="form-control" id="textinput-tubaSinfonica" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title27491">Ministério Palavra</h1><div data-component="crn-textinput" id="crn-textinput-anciaos" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-anciaos" class="">Anciãos</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.anciaos" class="form-control" id="textinput-anciaos" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-diaconos" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-diaconos" class="">Diáconos</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.diaconos" class="form-control" id="textinput-diaconos" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-coop" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-coop" class="">Coop</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.coop" class="form-control" id="textinput-coop" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-coopJovens" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-coopJovens" class="">Coop Jovens</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.coopJovens" class="form-control" id="textinput-coopJovens" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title27531">Ministério da Música</h1><div data-component="crn-textinput" id="crn-textinput-encLocais" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-encLocais" class="">Enc Locais</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="ensaioRegional.active.encLocais" class="form-control" id="textinput-encLocais" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-encRegionais" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-encRegionais" class="">Enc Regionais</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.encRegionais" class="form-control" id="textinput-encRegionais" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-examinadoras" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-examinadoras" class="">Examinadoras</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.examinadoras" class="form-control" id="textinput-examinadoras" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><div data-component="crn-textinput" id="crn-textinput-organistas" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-organistas" class="">Organistas</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.organistas" class="form-control" id="textinput-organistas" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title67421">Instrutores &amp; Instrutoras</h1><div data-component="crn-textinput" id="crn-textinput-instrutores" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-instrutores" class="">Instrutores</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.instrutores" class="form-control" id="textinput-instrutores" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-instrutoras" class="col-sm-12 col-md-1">
+                    <div class="form-group">
+                        <label for="textinput-instrutoras" class="">Instrutoras</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.instrutoras" class="form-control" id="textinput-instrutoras" placeholder="Qtd" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                
+                    
+
+                
+
+                <h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title23941">Hinos Ensaiados</h1><div data-component="crn-textinput" id="crn-textinput-hinosEnsaiados" class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="textinput-hinosEnsaiados" class="">Hinos Ensaiados</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input maxlength="500" type="text" ng-model="ensaioRegional.active.hinosEnsaiados" class="form-control" id="textinput-hinosEnsaiados" placeholder="Hinos Ensaiados" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><h1 class="lead text-center component-holder col-sm-12 col-md-12" xattr-position="text-center" data-component="crn-title" id="crn-title92821">Coleta Fundo Musical</h1><div data-component="crn-textinput" id="crn-textinput-fundoMusical" class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <label for="textinput-fundoMusical" class="">Fundo Musical</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="ensaioRegional.active.fundoMusical" class="form-control" id="textinput-fundoMusical" placeholder="R$: Fundo Musical" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                <!-- NtoN  -->
+                <!-- NtoN  end-->
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <!-- OneToN -->
+                <!-- OneToOne  end -->
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+<!-- OneToOne modal -->
+<!-- OneToOne modal end-->

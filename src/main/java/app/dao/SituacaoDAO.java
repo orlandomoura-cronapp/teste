@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.*;
  */
 @Repository("SituacaoDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface SituacaoDAO extends JpaRepository<Situacao, java.lang.String> {
+public interface SituacaoDAO extends JpaRepository<Situacao, java.lang.Integer> {
 
   /**
    * Obtém a instância de Situacao utilizando os identificadores
@@ -30,7 +30,7 @@ public interface SituacaoDAO extends JpaRepository<Situacao, java.lang.String> {
    * @generated
    */    
   @Query("SELECT entity FROM Situacao entity WHERE entity.id = :id")
-  public Situacao findOne(@Param(value="id") java.lang.String id);
+  public Situacao findOne(@Param(value="id") java.lang.Integer id);
 
   /**
    * Remove a instância de Situacao utilizando os identificadores
@@ -42,7 +42,7 @@ public interface SituacaoDAO extends JpaRepository<Situacao, java.lang.String> {
    */    
   @Modifying
   @Query("DELETE FROM Situacao entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.Integer id);
 
 
     
@@ -51,21 +51,21 @@ public interface SituacaoDAO extends JpaRepository<Situacao, java.lang.String> {
    * @generated
    */
   @Query("SELECT entity FROM Candidato entity WHERE entity.situacao.id = :id AND (entity.nome like concat('%',coalesce(:search,''),'%') OR entity.sexo like concat('%',coalesce(:search,''),'%'))")
-  public Page<Candidato> findCandidatoGeneralSearch(@Param(value="search") java.lang.String search, @Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Candidato> findCandidatoGeneralSearch(@Param(value="search") java.lang.String search, @Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /** 
    * OneToMany Relation - Searchable fields - Specific search
    * @generated
    */
   @Query("SELECT entity FROM Candidato entity WHERE entity.situacao.id = :id AND (:nome is null OR entity.nome like concat('%',:nome,'%')) AND (:dtNascimento is null OR entity.dtNascimento = :dtNascimento) AND (:sexo is null OR entity.sexo like concat('%',:sexo,'%'))")
-  public Page<Candidato> findCandidatoSpecificSearch(@Param(value="id") java.lang.String id, @Param(value="nome") java.lang.String nome, @Param(value="dtNascimento") java.util.Date dtNascimento, @Param(value="sexo") java.lang.String sexo, Pageable pageable);
+  public Page<Candidato> findCandidatoSpecificSearch(@Param(value="id") java.lang.Integer id, @Param(value="nome") java.lang.String nome, @Param(value="dtNascimento") java.util.Date dtNascimento, @Param(value="sexo") java.lang.String sexo, Pageable pageable);
 
   /**
    * OneToMany Relation
    * @generated
    */
   @Query("SELECT entity FROM Candidato entity WHERE entity.situacao.id = :id")
-  public Page<Candidato> findCandidato(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Candidato> findCandidato(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   
   /**

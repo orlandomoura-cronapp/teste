@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.*;
  */
 @Repository("MinisterioPalavraDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface MinisterioPalavraDAO extends JpaRepository<MinisterioPalavra, java.lang.String> {
+public interface MinisterioPalavraDAO extends JpaRepository<MinisterioPalavra, java.lang.Integer> {
 
   /**
    * Obtém a instância de MinisterioPalavra utilizando os identificadores
@@ -30,7 +30,7 @@ public interface MinisterioPalavraDAO extends JpaRepository<MinisterioPalavra, j
    * @generated
    */    
   @Query("SELECT entity FROM MinisterioPalavra entity WHERE entity.id = :id")
-  public MinisterioPalavra findOne(@Param(value="id") java.lang.String id);
+  public MinisterioPalavra findOne(@Param(value="id") java.lang.Integer id);
 
   /**
    * Remove a instância de MinisterioPalavra utilizando os identificadores
@@ -42,7 +42,7 @@ public interface MinisterioPalavraDAO extends JpaRepository<MinisterioPalavra, j
    */    
   @Modifying
   @Query("DELETE FROM MinisterioPalavra entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.Integer id);
 
 
 
@@ -66,13 +66,13 @@ public interface MinisterioPalavraDAO extends JpaRepository<MinisterioPalavra, j
    * @generated
    */
   @Query("SELECT entity FROM MinisterioPalavra entity WHERE entity.tipoMinisterio.id = :id")
-  public Page<MinisterioPalavra> findMinisterioPalavrasByTipoMinisterio(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<MinisterioPalavra> findMinisterioPalavrasByTipoMinisterio(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /**
    * Foreign Key evento
    * @generated
    */
   @Query("SELECT entity FROM MinisterioPalavra entity WHERE entity.evento.id = :id")
-  public Page<MinisterioPalavra> findMinisterioPalavrasByEvento(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<MinisterioPalavra> findMinisterioPalavrasByEvento(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
 }

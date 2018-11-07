@@ -31,8 +31,9 @@ public class Evento implements Serializable {
    * @generated
    */
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
+  private java.lang.Integer id;
 
   /**
   * @generated
@@ -51,6 +52,22 @@ public class Evento implements Serializable {
   private Comum comum;
 
   /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_candidato", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private Candidato candidato;
+
+  /**
+  * @generated
+  */
+  @Temporal(TemporalType.TIME)
+  @Column(name = "horario", nullable = true, unique = false, insertable=true, updatable=true)
+  
+  private java.util.Date horario;
+
+  /**
    * Construtor
    * @generated
    */
@@ -64,7 +81,7 @@ public class Evento implements Serializable {
    * @generated
    */
   
-  public java.lang.String getId(){
+  public java.lang.Integer getId(){
     return this.id;
   }
 
@@ -73,7 +90,7 @@ public class Evento implements Serializable {
    * @param id id
    * @generated
    */
-  public Evento setId(java.lang.String id){
+  public Evento setId(java.lang.Integer id){
     this.id = id;
     return this;
   }
@@ -115,6 +132,46 @@ public class Evento implements Serializable {
    */
   public Evento setComum(Comum comum){
     this.comum = comum;
+    return this;
+  }
+
+  /**
+   * Obtém candidato
+   * return candidato
+   * @generated
+   */
+  
+  public Candidato getCandidato(){
+    return this.candidato;
+  }
+
+  /**
+   * Define candidato
+   * @param candidato candidato
+   * @generated
+   */
+  public Evento setCandidato(Candidato candidato){
+    this.candidato = candidato;
+    return this;
+  }
+
+  /**
+   * Obtém horario
+   * return horario
+   * @generated
+   */
+  
+  public java.util.Date getHorario(){
+    return this.horario;
+  }
+
+  /**
+   * Define horario
+   * @param horario horario
+   * @generated
+   */
+  public Evento setHorario(java.util.Date horario){
+    this.horario = horario;
     return this;
   }
 

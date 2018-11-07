@@ -3,12 +3,6 @@
 <!-- div row para pesquisa -->
 <!--<div class="row">-->
 
-    <div ng-hide="MinisterioPalavra.inserting || MinisterioPalavra.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class="">
-        <div class="form-group">
-            <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
-            <input type="text" ng-model="vars.search" cronapp-filter="nome;" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="MinisterioPalavra" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
-        </div>
-    </div>
 
 <div data-component="crn-button" id="crn-button-564202" class="">
     <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="MinisterioPalavra.startInserting()" ng-hide="MinisterioPalavra.inserting || MinisterioPalavra.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -23,7 +17,16 @@
             <thead>
             <tr class="table-header">
                 <th class="">
+                    <div class="">Id</div>
+                </th>
+                <th class="">
                     <div class="">Nome</div>
+                </th>
+                <th class="">
+                    <div class="">TipoMinisterio</div>
+                </th>
+                <th class="">
+                    <div class="">Evento</div>
                 </th>
                 <th class="">
                     <div class="">{{"template.crud.actions" | translate}}</div>
@@ -34,7 +37,22 @@
             <tr class="table-content" ng-repeat="rowData in datasource.data">
                 <td class="">
                     <div class="">
+                                {{rowData.id  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
                                 {{rowData.nome  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.tipoMinisterio.nome}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.evento.data}}
                     </div>
                 </td>
                 <td class="">
@@ -97,6 +115,25 @@
                                     <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
                                         <div class="" data-container="true">
                                             {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Evento" entity="api/cronapi/crud/app.entity.Evento" keys="id" class="" dependent-by="{{MinisterioPalavra}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-evento" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-evento" class="">Evento</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="MinisterioPalavra.active.evento" crn-datasource="Evento" class="crn-select" id="combobox-dynamic-evento" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.data}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.data}}
                                         </div>
                                     </ui-select-choices>
                                 </ui-select>

@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.*;
  */
 @Repository("CandidatoDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface CandidatoDAO extends JpaRepository<Candidato, java.lang.String> {
+public interface CandidatoDAO extends JpaRepository<Candidato, java.lang.Integer> {
 
   /**
    * Obtém a instância de Candidato utilizando os identificadores
@@ -30,7 +30,7 @@ public interface CandidatoDAO extends JpaRepository<Candidato, java.lang.String>
    * @generated
    */    
   @Query("SELECT entity FROM Candidato entity WHERE entity.id = :id")
-  public Candidato findOne(@Param(value="id") java.lang.String id);
+  public Candidato findOne(@Param(value="id") java.lang.Integer id);
 
   /**
    * Remove a instância de Candidato utilizando os identificadores
@@ -42,9 +42,52 @@ public interface CandidatoDAO extends JpaRepository<Candidato, java.lang.String>
    */    
   @Modifying
   @Query("DELETE FROM Candidato entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.Integer id);
 
 
+
+  /**
+   * OneToMany Relation
+   * @generated
+   */
+  @Query("SELECT entity FROM Evento entity WHERE entity.candidato.id = :id")
+  public Page<Evento> findEvento(@Param(value="id") java.lang.Integer id, Pageable pageable);
+
+  /**
+   * OneToMany Relation
+   * @generated
+   */
+  @Query("SELECT entity FROM ensaio entity WHERE entity.candidato.id = :id")
+  public Page<ensaio> findEnsaio(@Param(value="id") java.lang.Integer id, Pageable pageable);
+  
+  /**
+   * ManyToOne Relation - Searchable fields - General search (Only strings fields)
+   * @generated
+   */
+  @Query("SELECT entity.comum FROM Evento entity WHERE entity.candidato.id = :id AND (entity.comum.nome like concat('%',coalesce(:search,''),'%'))")
+  public Page<Comum> listComumGeneralSearch(@Param(value="search") java.lang.String search, @Param(value="id") java.lang.Integer id, Pageable pageable);
+
+  /**
+   * ManyToOne Relation - Searchable fields - Specific search
+   * @generated
+   */
+  @Query("SELECT entity.comum FROM Evento entity WHERE entity.candidato.id = :id AND (:nome is null OR entity.comum.nome like concat('%',:nome,'%'))")
+  public Page<Comum> listComumSpecificSearch(@Param(value="id") java.lang.Integer id, @Param(value="nome") java.lang.String nome, Pageable pageable);
+
+  /**
+   * ManyToOne Relation
+   * @generated
+   */
+  @Query("SELECT entity.comum FROM Evento entity WHERE entity.candidato.id = :id")
+  public Page<Comum> listComum(@Param(value="id") java.lang.Integer id, Pageable pageable);
+
+  /**
+   * ManyToOne Relation Delete
+   * @generated
+   */
+  @Modifying
+  @Query("DELETE FROM Evento entity WHERE entity.candidato.id = :instanceId AND entity.comum.id = :relationId")
+  public int deleteComum(@Param(value="instanceId") java.lang.Integer instanceId, @Param(value="relationId") java.lang.Integer relationId);
 
   
   /**
@@ -66,20 +109,20 @@ public interface CandidatoDAO extends JpaRepository<Candidato, java.lang.String>
    * @generated
    */
   @Query("SELECT entity FROM Candidato entity WHERE entity.instrumento.id = :id")
-  public Page<Candidato> findCandidatosByInstrumento(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Candidato> findCandidatosByInstrumento(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /**
    * Foreign Key comum
    * @generated
    */
   @Query("SELECT entity FROM Candidato entity WHERE entity.comum.id = :id")
-  public Page<Candidato> findCandidatosByComum(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Candidato> findCandidatosByComum(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /**
    * Foreign Key situacao
    * @generated
    */
   @Query("SELECT entity FROM Candidato entity WHERE entity.situacao.id = :id")
-  public Page<Candidato> findCandidatosBySituacao(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Candidato> findCandidatosBySituacao(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
 }

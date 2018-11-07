@@ -3,12 +3,6 @@
 <!-- div row para pesquisa -->
 <!--<div class="row">-->
 
-    <div ng-hide="Evento.inserting || Evento.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class="">
-        <div class="form-group">
-            <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
-            <input type="text" ng-model="vars.search" cronapp-filter="data;" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="Evento" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
-        </div>
-    </div>
 
 <div data-component="crn-button" id="crn-button-564202" class="">
     <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="Evento.startInserting()" ng-hide="Evento.inserting || Evento.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -23,10 +17,19 @@
             <thead>
             <tr class="table-header">
                 <th class="">
+                    <div class="">Id</div>
+                </th>
+                <th class="">
                     <div class="">Data</div>
                 </th>
                 <th class="">
                     <div class="">Comum</div>
+                </th>
+                <th class="">
+                    <div class="">Candidato</div>
+                </th>
+                <th class="">
+                    <div class="">Horario</div>
                 </th>
                 <th class="">
                     <div class="">{{"template.crud.actions" | translate}}</div>
@@ -37,12 +40,27 @@
             <tr class="table-content" ng-repeat="rowData in datasource.data">
                 <td class="">
                     <div class="">
+                                {{rowData.id  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
                                 {{rowData.data | mask:'date'}}
                     </div>
                 </td>
                 <td class="">
                     <div class="">
                             {{rowData.comum.nome}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.candidato.nome}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.horario | mask:'time'}}
                     </div>
                 </td>
                 <td class="">
@@ -111,7 +129,81 @@
                          <!-- end if !model.hasCronappFramework() -->
                     </div>
                 </div>
+                    <datasource name="Candidato" entity="api/cronapi/crud/app.entity.Candidato" keys="id" class="" dependent-by="{{Evento}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-candidato" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-candidato" class="">Candidato</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Evento.active.candidato" crn-datasource="Candidato" class="crn-select" id="combobox-dynamic-candidato" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.nome}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-horario" class="">
+                    <div class="form-group">
+                        <label for="textinput-horario" class="">Horario</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="time"
+                                            ng-model="Evento.active.horario"
+                                            class="form-control"
+                                            id="textinput-horario"
+                                            placeholder="Horario"
+                                            mask="HH:mm"
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
                 <!-- NtoN  -->
+                <datasource append="false" name="TipoMinisterio" entity="api/cronapi/crud/app.entity.Evento/{{Evento.active.id}}/relation:tipoMinisterio:TipoMinisterio" keys="id" rows-per-page="100" lazy="true" auto-post="true" enabled="{{Evento.editing || Evento.inserting}}"dependent-lazy-post="Evento" dependent-lazy-post-field="evento"></datasource>
+                <datasource name="AllTipoMinisterio" entity="api/cronapi/crud/app.entity.TipoMinisterio" keys="id" rows-per-page="100" enabled="{{Evento.editing || Evento.inserting}}"></datasource>
+                    <div class="component-holder ng-binding ng-scope " data-component="crn-combobox" ng-show="datasource.editing || datasource.inserting" >
+                        <div class="form-group">
+                            <label for="select-ui">TipoMinisterio</label>
+                            <div id="select-ui" data-component="crn-tags">
+                                <ui-select multiple crn-datasource="AllTipoMinisterio" ng-model="TipoMinisterio.data" class="crn-select" style="min-width: 200px" theme="bootstrap" enabled="{{Evento.editing || Evento.inserting }}" >
+                                    <ui-select-match placeholder="TipoMinisterio...">
+                                        {{$item.nome }}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+                                        <div class="" data-container="true" draggable="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                <datasource append="false" name="TipoMinisterio_2" entity="api/cronapi/crud/app.entity.Evento/{{Evento.active.id}}/relation:tipoMinisterio:TipoMinisterio_2" keys="id" rows-per-page="100" lazy="true" auto-post="true" enabled="{{Evento.editing || Evento.inserting}}"dependent-lazy-post="Evento" dependent-lazy-post-field="evento"></datasource>
+                <datasource name="AllTipoMinisterio_2" entity="api/cronapi/crud/app.entity.TipoMinisterio" keys="id" rows-per-page="100" enabled="{{Evento.editing || Evento.inserting}}"></datasource>
+                    <div class="component-holder ng-binding ng-scope " data-component="crn-combobox" ng-show="datasource.editing || datasource.inserting" >
+                        <div class="form-group">
+                            <label for="select-ui">TipoMinisterio_2</label>
+                            <div id="select-ui" data-component="crn-tags">
+                                <ui-select multiple crn-datasource="AllTipoMinisterio_2" ng-model="TipoMinisterio_2.data" class="crn-select" style="min-width: 200px" theme="bootstrap" enabled="{{Evento.editing || Evento.inserting }}" >
+                                    <ui-select-match placeholder="TipoMinisterio_2...">
+                                        {{$item.nome }}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+                                        <div class="" data-container="true" draggable="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
                 <!-- NtoN  end-->
             </fieldset>
         </form>
@@ -235,6 +327,211 @@
                                         <td>
                                             <div>
                                                 <button class="btn btn-default btn-sm" data-component="crn-button" ng-click="datasource.startEditing(rowData)" onclick="$('#modalMinisterioPalavraGrid').modal('show');" ><i class="fa fa-edit"></i></button>
+                                                <button class="btn btn-default btn-sm" data-component="crn-button" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="table-footer-controls">
+                                    <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()" content="{{&quot;template.crud.load_more&quot; | translate}}...">{{"template.crud.load_more" | translate}}...</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--query filter 1toN -->
+                <!-- query filter 1toN end-->
+                <datasource filter="" name="AvaliacaoGrid" enabled="{{Evento.editing || Evento.inserting}}" entity="api/cronapi/crud/app.entity.Evento/{{Evento.active.id}}/relation:evento:Avaliacao" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Evento" dependent-lazy-post-field="evento"></datasource>
+                <div data-component="crn-button" class="">
+                    <button class="btn btn-primary" onclick="$('#modalAvaliacaoGrid').modal('show');" data-component="crn-button" ng-click="AvaliacaoGrid.startInserting();"><i class="fa fa-plus"></i> 
+						<span class="">{{"Add" | translate}} </span> 
+					</button>
+                </div>
+                <!--search 1toN-->
+                <!-- seach 1toN end-->
+                <div data-component="crn-textinput" id="crn-textinput-descricao">
+                    <div class="form-group">
+                        <label for="textinput-descricao" class="">
+							
+						</label>
+                        <div class="component-holder" data-component="crn-grid" id="crn-grid-AvaliacaoGrid">
+                            <div crn-datasource="AvaliacaoGrid">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                    <tr class="table-header">
+                                                <th class="">
+                                                    <div class="">
+                                                        Metodo 1
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Metodo 2
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Metodo 3
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Metodo 4
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Metodo 5
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Hinario
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Solfejo
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Conceito Teoria
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Conceito Hino
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Conceito Metodo
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Conceito Final
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Obs
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Tipoavaliacao
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Avaliadores
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Status
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Horario
+                                                    </div>
+                                                </th>
+                                        <th class="">
+                                            <div class="">
+                                                {{"template.crud.actions" | translate}}
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="table-content" ng-repeat="rowData in datasource.data">
+                                                <td>
+                                                    <div>
+                                                            {{rowData.metodo1 }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.metodo2 }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.metodo3 }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.metodo4 }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.metodo5 }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.hinario }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.solfejo }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.conceitoTeoria }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.conceitoHino }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.conceitoMetodo }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.conceitoFinal }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.obs }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.tipoAvaliacao.nome }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.avaliadores.nome }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.status.status }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.horario | mask:'HH:mm:ss'}}
+                                                    </div>
+                                                </td>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-default btn-sm" data-component="crn-button" ng-click="datasource.startEditing(rowData)" onclick="$('#modalAvaliacaoGrid').modal('show');" ><i class="fa fa-edit"></i></button>
                                                 <button class="btn btn-default btn-sm" data-component="crn-button" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
                                             </div>
                                         </td>
@@ -372,6 +669,309 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" data-component="crn-button" ng-click="MinisterioPalavraGrid.post();" onclick="(!MinisterioPalavraGrid.missingRequiredField()?$('#modalMinisterioPalavraGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
+                    <button type="button" class="btn btn-default" data-component="crn-button" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalAvaliacaoGrid">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Avaliacao</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group list-group-sm row">
+<!-- else of !model.hasCronappFramework() -->
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-metodo1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-metodo1">Metodo 1</label>
+                                                <input type="text"
+                                                       maxlength="100"
+                                                       ng-model="AvaliacaoGrid.active.metodo1" class="form-control"
+                                                       id="textinput-metodo1"
+                                                       placeholder="Metodo 1"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-metodo2" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-metodo2">Metodo 2</label>
+                                                <input type="text"
+                                                       maxlength="100"
+                                                       ng-model="AvaliacaoGrid.active.metodo2" class="form-control"
+                                                       id="textinput-metodo2"
+                                                       placeholder="Metodo 2"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-metodo3" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-metodo3">Metodo 3</label>
+                                                <input type="text"
+                                                       maxlength="100"
+                                                       ng-model="AvaliacaoGrid.active.metodo3" class="form-control"
+                                                       id="textinput-metodo3"
+                                                       placeholder="Metodo 3"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-metodo4" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-metodo4">Metodo 4</label>
+                                                <input type="text"
+                                                       maxlength="100"
+                                                       ng-model="AvaliacaoGrid.active.metodo4" class="form-control"
+                                                       id="textinput-metodo4"
+                                                       placeholder="Metodo 4"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-metodo5" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-metodo5">Metodo 5</label>
+                                                <input type="text"
+                                                       maxlength="100"
+                                                       ng-model="AvaliacaoGrid.active.metodo5" class="form-control"
+                                                       id="textinput-metodo5"
+                                                       placeholder="Metodo 5"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-hinario" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-hinario">Hinario</label>
+                                                <input type="text"
+                                                       maxlength="150"
+                                                       ng-model="AvaliacaoGrid.active.hinario" class="form-control"
+                                                       id="textinput-hinario"
+                                                       placeholder="Hinario"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-solfejo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-solfejo">Solfejo</label>
+                                                <input type="text"
+                                                       maxlength="100"
+                                                       ng-model="AvaliacaoGrid.active.solfejo" class="form-control"
+                                                       id="textinput-solfejo"
+                                                       placeholder="Solfejo"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-conceitoTeoria" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-conceitoTeoria">Conceito Teoria</label>
+                                                <input type="text"
+                                                       maxlength="6"
+                                                       ng-model="AvaliacaoGrid.active.conceitoTeoria" class="form-control"
+                                                       id="textinput-conceitoTeoria"
+                                                       placeholder="Conceito Teoria"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-conceitoHino" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-conceitoHino">Conceito Hino</label>
+                                                <input type="text"
+                                                       maxlength="6"
+                                                       ng-model="AvaliacaoGrid.active.conceitoHino" class="form-control"
+                                                       id="textinput-conceitoHino"
+                                                       placeholder="Conceito Hino"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-conceitoMetodo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-conceitoMetodo">Conceito Metodo</label>
+                                                <input type="text"
+                                                       maxlength="6"
+                                                       ng-model="AvaliacaoGrid.active.conceitoMetodo" class="form-control"
+                                                       id="textinput-conceitoMetodo"
+                                                       placeholder="Conceito Metodo"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-conceitoFinal" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-conceitoFinal">Conceito Final</label>
+                                                <input type="text"
+                                                       maxlength="6"
+                                                       ng-model="AvaliacaoGrid.active.conceitoFinal" class="form-control"
+                                                       id="textinput-conceitoFinal"
+                                                       placeholder="Conceito Final"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-obs" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-obs">Obs</label>
+                                                <input type="text"
+                                                       maxlength="200"
+                                                       ng-model="AvaliacaoGrid.active.obs" class="form-control"
+                                                       id="textinput-obs"
+                                                       placeholder="Obs"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                                        <datasource name="TipoavaliacaoGridForUiSelect" entity="api/cronapi/crud/app.entity.TipoAvaliacao" keys="id" rows-per-page="100" lazy="true" enabled="{{Evento.editing || Evento.inserting}}" ></datasource>
+                                        <div data-component="crn-combobox-dynamic" id="crn-combobox-AvaliacaoGrid.active.tipoAvaliacao" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="combobox-tipoAvaliacao" class="">Tipoavaliacao</label>
+                                                <ui-select ng-model="AvaliacaoGrid.active.tipoAvaliacao" crn-datasource="TipoavaliacaoGridForUiSelect" class="crn-select" id="combobox-tipoAvaliacao" ng-required="false" ng-disabled="disabled" theme="bootstrap" >
+                                                    <ui-select-match placeholder="Select..." class="">
+                                                        {{$select.selected.nome}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                                        <div class="">
+                                                            {{rowData.nome}}
+                                                        </div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                                        <datasource name="AvaliadoresGridForUiSelect" entity="api/cronapi/crud/app.entity.Avaliadores" keys="id" rows-per-page="100" lazy="true" enabled="{{Evento.editing || Evento.inserting}}" ></datasource>
+                                        <div data-component="crn-combobox-dynamic" id="crn-combobox-AvaliacaoGrid.active.avaliadores" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="combobox-avaliadores" class="">Avaliadores</label>
+                                                <ui-select ng-model="AvaliacaoGrid.active.avaliadores" crn-datasource="AvaliadoresGridForUiSelect" class="crn-select" id="combobox-avaliadores" ng-required="false" ng-disabled="disabled" theme="bootstrap" >
+                                                    <ui-select-match placeholder="Select..." class="">
+                                                        {{$select.selected.nome}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                                        <div class="">
+                                                            {{rowData.nome}}
+                                                        </div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                                        <datasource name="StatusGridForUiSelect" entity="api/cronapi/crud/app.entity.status" keys="id" rows-per-page="100" lazy="true" enabled="{{Evento.editing || Evento.inserting}}" ></datasource>
+                                        <div data-component="crn-combobox-dynamic" id="crn-combobox-AvaliacaoGrid.active.status" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="combobox-status" class="">Status</label>
+                                                <ui-select ng-model="AvaliacaoGrid.active.status" crn-datasource="StatusGridForUiSelect" class="crn-select" id="combobox-status" ng-required="false" ng-disabled="disabled" theme="bootstrap" >
+                                                    <ui-select-match placeholder="Select..." class="">
+                                                        {{$select.selected.status}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                                        <div class="">
+                                                            {{rowData.status}}
+                                                        </div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-horario" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-horario">Horario</label>
+                                                <input type="time"
+                                                       ng-model="AvaliacaoGrid.active.horario" class="form-control"
+                                                       id="textinput-horario"
+                                                       placeholder="Horario"
+                                                       mask="HH:mm:ss"
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-component="crn-button" ng-click="AvaliacaoGrid.post();" onclick="(!AvaliacaoGrid.missingRequiredField()?$('#modalAvaliacaoGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
                     <button type="button" class="btn btn-default" data-component="crn-button" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
                 </div>
             </form>

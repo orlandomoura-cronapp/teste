@@ -1,0 +1,33 @@
+{
+	"onSystemStarts": {
+		"blocklyClass": "blockly.AgendarEmail",
+		"blocklyMethod": "Executar",
+		"blockly": {
+			"namespace": "blockly.AgendarEmail",
+			"classNameNew": "AgendarEmail",
+			"classNameOld": "AgendarEmail",
+			"sourcePath": "src/main/java/blockly/AgendarEmail.blockly",
+			"language": "java",
+			"class": "blockly.AgendarEmail",
+			"methods": [
+				{
+					"name": "Executar",
+					"hasReturn": "true",
+					"params": []
+				}
+			]
+		}
+	},
+	"onLogout": null,
+	"onLogin": null,
+	"onSessionCreate": null,
+	"onSessionDestroy": null,
+	"afterPageRender": null,
+	"afterLoginRender": null,
+	"afterHomeRender": null,
+	"onAuthenticate": null,
+	"onGetRoles": null,
+	"onGetMultitenantId": null,
+	"onChangePassword": null,
+	"onChangeTheme": null
+}

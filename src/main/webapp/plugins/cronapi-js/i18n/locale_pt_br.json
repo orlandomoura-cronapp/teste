@@ -232,7 +232,9 @@
 	"searchIdsDescription": "Identificador do campo da tela",
 	"enableComponent": "Habilitar componente",
 	"enableComponentDesc": "Função que habilita o componente o uso do componente na tela",
-	"disableComponent": "Desabilitar componente",
+    "focusComponent": "Focar componente",
+    "focusComponentDesc": "Função que foca um componente na tela",
+    "disableComponent": "Desabilitar componente",
 	"disableComponentDesc": "Função que desabilita o uso do componente na tela",
 	"CategoryType.OBJECT": "Objeto",
 	"getProperty": "Obter Propriedade",
@@ -390,5 +392,13 @@
 	"function":"Função",
 	"array":"Lista",
 	"returnType":"Tipo de Retorno",
-	"mediaType":"Tipo de Mídia"
+	"mediaType":"Tipo de Mídia",
+	"setActiveTab": "Mudar aba",
+	"setActiveTablDesc": "Função que modifica a aba ativa do componente aba",
+	"getDeviceInfo":"Obter Informações do Dispositivo",
+	"getDeviceInfoDescription":"Função que obtém as informações do dispositivo",
+	"getFirebaseToken":"Obter Token do Firebase",
+	"getFirebaseTokenDescription":"Função que retorna o token do firebase para enviar notificações push",
+	"dbName":"Nome do Banco"
+	
 }

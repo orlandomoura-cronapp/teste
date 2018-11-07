@@ -24,6 +24,18 @@
         public: true
       }
     }
+  
+  app.common = {
+      generateId: function() {
+        var numbersOnly = '0123456789';
+        var result = Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+        if (numbersOnly.indexOf(result.substr(0,1)) > -1)
+          return this.generateId();
+        return result;
+      }
+  }
 
     if (perm) {
       var perms = perm.toLowerCase().trim().split(",");
@@ -793,17 +805,20 @@
             var templateDyn    = '\
                   <textarea \
                     ui-tinymce="$options$" \
-                    ng-model="$ngModel$"> \
+                    ng-model="$ngModel$" \
+                    id="$id$"> \
                   </textarea> \
                 ';
             templateDyn = $(templateDyn
                 .split('$ngModel$').join(attrs.ngModel)
+                .split('$id$').join(attrs.id || app.common.generateId())
                 .split('$options$').join(escape(tinyMCEOptions))
             );
 
             var x = angular.element(templateDyn);
             element.html('');
             element.append(x);
+            element.attr('id' , null);
             $compile(x)(scope);
           }
         };

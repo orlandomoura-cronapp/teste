@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.*;
  */
 @Repository("TipoAvaliacaoDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface TipoAvaliacaoDAO extends JpaRepository<TipoAvaliacao, java.lang.String> {
+public interface TipoAvaliacaoDAO extends JpaRepository<TipoAvaliacao, java.lang.Integer> {
 
   /**
    * Obtém a instância de TipoAvaliacao utilizando os identificadores
@@ -30,7 +30,7 @@ public interface TipoAvaliacaoDAO extends JpaRepository<TipoAvaliacao, java.lang
    * @generated
    */    
   @Query("SELECT entity FROM TipoAvaliacao entity WHERE entity.id = :id")
-  public TipoAvaliacao findOne(@Param(value="id") java.lang.String id);
+  public TipoAvaliacao findOne(@Param(value="id") java.lang.Integer id);
 
   /**
    * Remove a instância de TipoAvaliacao utilizando os identificadores
@@ -42,7 +42,7 @@ public interface TipoAvaliacaoDAO extends JpaRepository<TipoAvaliacao, java.lang
    */    
   @Modifying
   @Query("DELETE FROM TipoAvaliacao entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.Integer id);
 
 
 
@@ -51,7 +51,7 @@ public interface TipoAvaliacaoDAO extends JpaRepository<TipoAvaliacao, java.lang
    * @generated
    */
   @Query("SELECT entity FROM Avaliacao entity WHERE entity.tipoAvaliacao.id = :id")
-  public Page<Avaliacao> findAvaliacao(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliacao> findAvaliacao(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   
   /**

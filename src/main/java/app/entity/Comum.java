@@ -30,8 +30,9 @@ public class Comum implements Serializable {
    * @generated
    */
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
+  private java.lang.Integer id;
 
   /**
   * @generated
@@ -39,6 +40,30 @@ public class Comum implements Serializable {
   @Column(name = "nome", nullable = true, unique = false, insertable=true, updatable=true)
   
   private java.lang.String nome;
+
+  /**
+  * @generated
+  */
+  @OneToOne
+  @JoinColumn(name="fk_estado", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private estado estado;
+
+  /**
+  * @generated
+  */
+  @OneToOne
+  @JoinColumn(name="fk_cidade", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private cidade cidade;
+
+  /**
+  * @generated
+  */
+  @OneToOne
+  @JoinColumn(name="fk_bairro", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private bairro bairro;
 
   /**
    * Construtor
@@ -54,7 +79,7 @@ public class Comum implements Serializable {
    * @generated
    */
   
-  public java.lang.String getId(){
+  public java.lang.Integer getId(){
     return this.id;
   }
 
@@ -63,7 +88,7 @@ public class Comum implements Serializable {
    * @param id id
    * @generated
    */
-  public Comum setId(java.lang.String id){
+  public Comum setId(java.lang.Integer id){
     this.id = id;
     return this;
   }
@@ -85,6 +110,66 @@ public class Comum implements Serializable {
    */
   public Comum setNome(java.lang.String nome){
     this.nome = nome;
+    return this;
+  }
+
+  /**
+   * Obtém estado
+   * return estado
+   * @generated
+   */
+  
+  public estado getEstado(){
+    return this.estado;
+  }
+
+  /**
+   * Define estado
+   * @param estado estado
+   * @generated
+   */
+  public Comum setEstado(estado estado){
+    this.estado = estado;
+    return this;
+  }
+
+  /**
+   * Obtém cidade
+   * return cidade
+   * @generated
+   */
+  
+  public cidade getCidade(){
+    return this.cidade;
+  }
+
+  /**
+   * Define cidade
+   * @param cidade cidade
+   * @generated
+   */
+  public Comum setCidade(cidade cidade){
+    this.cidade = cidade;
+    return this;
+  }
+
+  /**
+   * Obtém bairro
+   * return bairro
+   * @generated
+   */
+  
+  public bairro getBairro(){
+    return this.bairro;
+  }
+
+  /**
+   * Define bairro
+   * @param bairro bairro
+   * @generated
+   */
+  public Comum setBairro(bairro bairro){
+    this.bairro = bairro;
     return this;
   }
 

@@ -231,6 +231,8 @@
 	"searchIdsDescription": "Identifier field from screen",
 	"enableComponent": "Enable component",
 	"enableComponentDesc": "Function that enable a component from screen",
+    "focusComponent": "Focus component",
+    "focusComponentDesc": "Function that focus a component from screen",
 	"disableComponent": "Disable component",
 	"disableComponentDesc": "Function that disable a component from screen",
 	"CategoryType.OBJECT": "Object",
@@ -388,5 +390,12 @@
 	"function":"Function",
 	"array":"List",
 	"returnType":"Return Type",
-	"mediaType":"Media Type"
+	"mediaType":"Media Type",
+	"setActiveTab": "Change tab",
+	"setActiveTablDesc": "Function that set active the selected tab",
+	"getDeviceInfo":"Obter Informações do Dispositivo",
+	"getDeviceInfoDescription":"Function that get a device info, i.e  uuid, platform",
+	"getFirebaseToken":"Get Firebase Token",
+	"getFirebaseTokenDescription":"Function that return a firease token for send push notifications",
+	"dbName":"Database Name"
 }

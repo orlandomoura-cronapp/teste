@@ -103,6 +103,25 @@
                          <!-- end if !model.hasCronappFramework() -->
                     </div>
                 </div>
+                    <datasource name="Evento" entity="api/cronapi/crud/app.entity.Evento" keys="id" class="" dependent-by="{{Avaliadores}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-evento" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-evento" class="">Evento</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Avaliadores.active.evento" crn-datasource="Evento" class="crn-select" id="combobox-dynamic-evento" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.data}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.data}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
                 <!-- NtoN  -->
                 <!-- NtoN  end-->
             </fieldset>

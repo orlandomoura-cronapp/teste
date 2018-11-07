@@ -30,99 +30,93 @@ public class Avaliacao implements Serializable {
    * @generated
    */
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
+  private java.lang.Integer id;
 
   /**
   * @generated
   */
-  @Column(name = "metodo1", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "metodo1", nullable = true, unique = false, length=100, insertable=true, updatable=true)
   
   private java.lang.String metodo1;
 
   /**
   * @generated
   */
-  @Column(name = "metodo2", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "metodo2", nullable = true, unique = false, length=100, insertable=true, updatable=true)
   
   private java.lang.String metodo2;
 
   /**
   * @generated
   */
-  @Column(name = "metodo3", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "metodo3", nullable = true, unique = false, length=100, insertable=true, updatable=true)
   
   private java.lang.String metodo3;
 
   /**
   * @generated
   */
-  @Column(name = "metodo4", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "metodo4", nullable = true, unique = false, length=100, insertable=true, updatable=true)
   
   private java.lang.String metodo4;
 
   /**
   * @generated
   */
-  @Column(name = "metodo5", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "metodo5", nullable = true, unique = false, length=100, insertable=true, updatable=true)
   
   private java.lang.String metodo5;
 
   /**
   * @generated
   */
-  @Column(name = "hinario", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "hinario", nullable = true, unique = false, length=150, insertable=true, updatable=true)
   
   private java.lang.String hinario;
 
   /**
   * @generated
   */
-  @Column(name = "solfejo", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "solfejo", nullable = true, unique = false, length=100, insertable=true, updatable=true)
   
   private java.lang.String solfejo;
 
   /**
   * @generated
   */
-  @Column(name = "conceitoTeoria", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "conceitoTeoria", nullable = true, unique = false, length=6, insertable=true, updatable=true)
   
   private java.lang.String conceitoTeoria;
 
   /**
   * @generated
   */
-  @Column(name = "conceitoHino", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "conceitoHino", nullable = true, unique = false, length=6, insertable=true, updatable=true)
   
   private java.lang.String conceitoHino;
 
   /**
   * @generated
   */
-  @Column(name = "conceitoMetodo", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "conceitoMetodo", nullable = true, unique = false, length=6, insertable=true, updatable=true)
   
   private java.lang.String conceitoMetodo;
 
   /**
   * @generated
   */
-  @Column(name = "conceitoFinal", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "conceitoFinal", nullable = true, unique = false, length=6, insertable=true, updatable=true)
   
   private java.lang.String conceitoFinal;
 
   /**
   * @generated
   */
-  @Column(name = "obs", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "obs", nullable = true, unique = false, length=200, insertable=true, updatable=true)
   
   private java.lang.String obs;
-
-  /**
-  * @generated
-  */
-  @Column(name = "statusFinal", nullable = true, unique = false, insertable=true, updatable=true)
-  
-  private java.lang.String statusFinal;
 
   /**
   * @generated
@@ -149,6 +143,22 @@ public class Avaliacao implements Serializable {
   private Evento evento;
 
   /**
+  * @generated
+  */
+  @OneToOne
+  @JoinColumn(name="fk_status", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private status status;
+
+  /**
+  * @generated
+  */
+  @Temporal(TemporalType.TIME)
+  @Column(name = "horario", nullable = true, unique = false, insertable=true, updatable=true)
+  
+  private java.util.Date horario;
+
+  /**
    * Construtor
    * @generated
    */
@@ -162,7 +172,7 @@ public class Avaliacao implements Serializable {
    * @generated
    */
   
-  public java.lang.String getId(){
+  public java.lang.Integer getId(){
     return this.id;
   }
 
@@ -171,7 +181,7 @@ public class Avaliacao implements Serializable {
    * @param id id
    * @generated
    */
-  public Avaliacao setId(java.lang.String id){
+  public Avaliacao setId(java.lang.Integer id){
     this.id = id;
     return this;
   }
@@ -417,26 +427,6 @@ public class Avaliacao implements Serializable {
   }
 
   /**
-   * Obtém statusFinal
-   * return statusFinal
-   * @generated
-   */
-  
-  public java.lang.String getStatusFinal(){
-    return this.statusFinal;
-  }
-
-  /**
-   * Define statusFinal
-   * @param statusFinal statusFinal
-   * @generated
-   */
-  public Avaliacao setStatusFinal(java.lang.String statusFinal){
-    this.statusFinal = statusFinal;
-    return this;
-  }
-
-  /**
    * Obtém tipoAvaliacao
    * return tipoAvaliacao
    * @generated
@@ -493,6 +483,46 @@ public class Avaliacao implements Serializable {
    */
   public Avaliacao setEvento(Evento evento){
     this.evento = evento;
+    return this;
+  }
+
+  /**
+   * Obtém status
+   * return status
+   * @generated
+   */
+  
+  public status getStatus(){
+    return this.status;
+  }
+
+  /**
+   * Define status
+   * @param status status
+   * @generated
+   */
+  public Avaliacao setStatus(status status){
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Obtém horario
+   * return horario
+   * @generated
+   */
+  
+  public java.util.Date getHorario(){
+    return this.horario;
+  }
+
+  /**
+   * Define horario
+   * @param horario horario
+   * @generated
+   */
+  public Avaliacao setHorario(java.util.Date horario){
+    this.horario = horario;
     return this;
   }
 

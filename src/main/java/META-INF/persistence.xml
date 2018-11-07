@@ -3,21 +3,27 @@
     <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <non-jta-data-source>java:comp/env/jdbc/main</non-jta-data-source>
-        <class>app.entity.CategoriaInstrumento</class>
-        <class>app.entity.Instrumento</class>
-        <class>app.entity.Candidato</class>
-        <class>app.entity.Comum</class>
-        <class>app.entity.Avaliadores</class>
-        <class>app.entity.Evento</class>
+        <class>app.entity.cidade</class>
+        <class>app.entity.ensaio</class>
         <class>app.entity.Situacao</class>
-        <class>app.entity.TipoMinisterio</class>
-        <class>app.entity.MinisterioPalavra</class>
         <class>app.entity.Avaliacao</class>
-        <class>app.entity.TipoAvaliacao</class>
+        <class>app.entity.bairro</class>
+        <class>app.entity.estado</class>
         <class>app.entity.User</class>
+        <class>app.entity.ensaioRegional</class>
+        <class>app.entity.TipoAvaliacao</class>
+        <class>app.entity.Instrumento</class>
+        <class>app.entity.Comum</class>
+        <class>app.entity.MinisterioPalavra</class>
+        <class>app.entity.CategoriaInstrumento</class>
+        <class>app.entity.TipoMinisterio</class>
         <class>app.entity.Role</class>
+        <class>app.entity.Evento</class>
+        <class>app.entity.status</class>
+        <class>app.entity.Candidato</class>
+        <class>app.entity.Avaliadores</class>
         <properties>
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
         </properties>
     </persistence-unit>
 </persistence>

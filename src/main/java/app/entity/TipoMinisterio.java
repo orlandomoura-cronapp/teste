@@ -30,8 +30,9 @@ public class TipoMinisterio implements Serializable {
    * @generated
    */
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
+  private java.lang.Integer id;
 
   /**
   * @generated
@@ -54,7 +55,7 @@ public class TipoMinisterio implements Serializable {
    * @generated
    */
   
-  public java.lang.String getId(){
+  public java.lang.Integer getId(){
     return this.id;
   }
 
@@ -63,7 +64,7 @@ public class TipoMinisterio implements Serializable {
    * @param id id
    * @generated
    */
-  public TipoMinisterio setId(java.lang.String id){
+  public TipoMinisterio setId(java.lang.Integer id){
     this.id = id;
     return this;
   }

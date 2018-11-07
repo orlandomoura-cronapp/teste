@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.*;
  */
 @Repository("AvaliacaoDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface AvaliacaoDAO extends JpaRepository<Avaliacao, java.lang.String> {
+public interface AvaliacaoDAO extends JpaRepository<Avaliacao, java.lang.Integer> {
 
   /**
    * Obtém a instância de Avaliacao utilizando os identificadores
@@ -30,7 +30,7 @@ public interface AvaliacaoDAO extends JpaRepository<Avaliacao, java.lang.String>
    * @generated
    */    
   @Query("SELECT entity FROM Avaliacao entity WHERE entity.id = :id")
-  public Avaliacao findOne(@Param(value="id") java.lang.String id);
+  public Avaliacao findOne(@Param(value="id") java.lang.Integer id);
 
   /**
    * Remove a instância de Avaliacao utilizando os identificadores
@@ -42,7 +42,7 @@ public interface AvaliacaoDAO extends JpaRepository<Avaliacao, java.lang.String>
    */    
   @Modifying
   @Query("DELETE FROM Avaliacao entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.Integer id);
 
 
 
@@ -51,20 +51,20 @@ public interface AvaliacaoDAO extends JpaRepository<Avaliacao, java.lang.String>
    * @generated
    */
   @Query("SELECT entity FROM Avaliacao entity WHERE entity.tipoAvaliacao.id = :id")
-  public Page<Avaliacao> findAvaliacaosByTipoAvaliacao(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliacao> findAvaliacaosByTipoAvaliacao(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /**
    * Foreign Key avaliadores
    * @generated
    */
   @Query("SELECT entity FROM Avaliacao entity WHERE entity.avaliadores.id = :id")
-  public Page<Avaliacao> findAvaliacaosByAvaliadores(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliacao> findAvaliacaosByAvaliadores(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /**
    * Foreign Key evento
    * @generated
    */
   @Query("SELECT entity FROM Avaliacao entity WHERE entity.evento.id = :id")
-  public Page<Avaliacao> findAvaliacaosByEvento(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliacao> findAvaliacaosByEvento(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
 }

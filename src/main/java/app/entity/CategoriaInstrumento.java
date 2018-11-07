@@ -30,8 +30,9 @@ public class CategoriaInstrumento implements Serializable {
    * @generated
    */
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
+  private java.lang.String id;
 
   /**
   * @generated

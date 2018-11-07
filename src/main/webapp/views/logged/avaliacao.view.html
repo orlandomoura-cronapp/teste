@@ -23,7 +23,7 @@
             <thead>
             <tr class="table-header">
                 <th class="">
-                    <div class="">Metodo 3</div>
+                    <div class="">TipoAvaliacao</div>
                 </th>
                 <th class="">
                     <div class="">Evento</div>
@@ -37,7 +37,7 @@
             <tr class="table-content" ng-repeat="rowData in datasource.data">
                 <td class="">
                     <div class="">
-                                {{rowData.metodo3  }}
+                            {{rowData.tipoAvaliacao.nome}}
                     </div>
                 </td>
                 <td class="">
@@ -81,6 +81,7 @@
                         <label for="textinput-metodo1" class="">Metodo 1</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="100"
                                             type="text"
                                             ng-model="Avaliacao.active.metodo1"
                                             class="form-control"
@@ -98,6 +99,7 @@
                         <label for="textinput-metodo2" class="">Metodo 2</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="100"
                                             type="text"
                                             ng-model="Avaliacao.active.metodo2"
                                             class="form-control"
@@ -115,6 +117,7 @@
                         <label for="textinput-metodo3" class="">Metodo 3</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="100"
                                             type="text"
                                             ng-model="Avaliacao.active.metodo3"
                                             class="form-control"
@@ -132,6 +135,7 @@
                         <label for="textinput-metodo4" class="">Metodo 4</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="100"
                                             type="text"
                                             ng-model="Avaliacao.active.metodo4"
                                             class="form-control"
@@ -149,6 +153,7 @@
                         <label for="textinput-metodo5" class="">Metodo 5</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="100"
                                             type="text"
                                             ng-model="Avaliacao.active.metodo5"
                                             class="form-control"
@@ -166,6 +171,7 @@
                         <label for="textinput-hinario" class="">Hinario</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="150"
                                             type="text"
                                             ng-model="Avaliacao.active.hinario"
                                             class="form-control"
@@ -183,6 +189,7 @@
                         <label for="textinput-solfejo" class="">Solfejo</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="100"
                                             type="text"
                                             ng-model="Avaliacao.active.solfejo"
                                             class="form-control"
@@ -200,6 +207,7 @@
                         <label for="textinput-conceitoTeoria" class="">Conceito Teoria</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="6"
                                             type="text"
                                             ng-model="Avaliacao.active.conceitoTeoria"
                                             class="form-control"
@@ -217,6 +225,7 @@
                         <label for="textinput-conceitoHino" class="">Conceito Hino</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="6"
                                             type="text"
                                             ng-model="Avaliacao.active.conceitoHino"
                                             class="form-control"
@@ -234,6 +243,7 @@
                         <label for="textinput-conceitoMetodo" class="">Conceito Metodo</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="6"
                                             type="text"
                                             ng-model="Avaliacao.active.conceitoMetodo"
                                             class="form-control"
@@ -251,6 +261,7 @@
                         <label for="textinput-conceitoFinal" class="">Conceito Final</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="6"
                                             type="text"
                                             ng-model="Avaliacao.active.conceitoFinal"
                                             class="form-control"
@@ -268,28 +279,12 @@
                         <label for="textinput-obs" class="">Obs</label>
  <!-- else for if !model.hasCronappFramework() -->
                                 <input
+                                            maxlength="200"
                                             type="text"
                                             ng-model="Avaliacao.active.obs"
                                             class="form-control"
                                             id="textinput-obs"
                                             placeholder="Obs"
-                                            mask=""
-                                            mask-placeholder=""
-                                            ng-required="false">
-                         <!-- end if !model.hasCronappFramework() -->
-                    </div>
-                </div>
-
-                <div data-component="crn-textinput" id="crn-textinput-statusFinal" class="">
-                    <div class="form-group">
-                        <label for="textinput-statusFinal" class="">Status Final</label>
- <!-- else for if !model.hasCronappFramework() -->
-                                <input
-                                            type="text"
-                                            ng-model="Avaliacao.active.statusFinal"
-                                            class="form-control"
-                                            id="textinput-statusFinal"
-                                            placeholder="Status Final"
                                             mask=""
                                             mask-placeholder=""
                                             ng-required="false">
@@ -350,6 +345,42 @@
                                         </div>
                                     </ui-select-choices>
                                 </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Status" entity="api/cronapi/crud/app.entity.status" keys="id" class="" dependent-by="{{Avaliacao}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-status" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-status" class="">Status</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Avaliacao.active.status" crn-datasource="Status" class="crn-select" id="combobox-dynamic-status" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.status}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.status}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-horario" class="">
+                    <div class="form-group">
+                        <label for="textinput-horario" class="">Horario</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="time"
+                                            ng-model="Avaliacao.active.horario"
+                                            class="form-control"
+                                            id="textinput-horario"
+                                            placeholder="Horario"
+                                            mask="HH:mm:ss"
+                                            mask-placeholder=""
+                                            ng-required="false">
                          <!-- end if !model.hasCronappFramework() -->
                     </div>
                 </div>

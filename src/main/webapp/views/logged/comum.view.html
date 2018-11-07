@@ -26,6 +26,12 @@
                     <div class="">Nome</div>
                 </th>
                 <th class="">
+                    <div class="">Cidade</div>
+                </th>
+                <th class="">
+                    <div class="">Bairro</div>
+                </th>
+                <th class="">
                     <div class="">{{"template.crud.actions" | translate}}</div>
                 </th>
             </tr>
@@ -35,6 +41,16 @@
                 <td class="">
                     <div class="">
                                 {{rowData.nome  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.cidade.cidade}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.bairro.bairro}}
                     </div>
                 </td>
                 <td class="">
@@ -81,6 +97,63 @@
                                             mask=""
                                             mask-placeholder=""
                                             ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Estado" entity="api/cronapi/crud/app.entity.estado" keys="id" class="" dependent-by="{{Comum}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-estado" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-estado" class="">Estado</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Comum.active.estado" crn-datasource="Estado" class="crn-select" id="combobox-dynamic-estado" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.estado}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.estado}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Cidade" entity="api/cronapi/crud/app.entity.cidade" keys="id" class="" dependent-by="{{Comum}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-cidade" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-cidade" class="">Cidade</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Comum.active.cidade" crn-datasource="Cidade" class="crn-select" id="combobox-dynamic-cidade" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.cidade}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.cidade}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Bairro" entity="api/cronapi/crud/app.entity.bairro" keys="id" class="" dependent-by="{{Comum}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-bairro" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-bairro" class="">Bairro</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Comum.active.bairro" crn-datasource="Bairro" class="crn-select" id="combobox-dynamic-bairro" ng-required="false" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.bairro}}
+                                    </ui-select-match>
+                                    <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.bairro}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
                          <!-- end if !model.hasCronappFramework() -->
                     </div>
                 </div>

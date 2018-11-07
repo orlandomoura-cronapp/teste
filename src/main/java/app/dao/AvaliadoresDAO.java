@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.*;
  */
 @Repository("AvaliadoresDAO")
 @Transactional(transactionManager="app-TransactionManager")
-public interface AvaliadoresDAO extends JpaRepository<Avaliadores, java.lang.String> {
+public interface AvaliadoresDAO extends JpaRepository<Avaliadores, java.lang.Integer> {
 
   /**
    * Obtém a instância de Avaliadores utilizando os identificadores
@@ -30,7 +30,7 @@ public interface AvaliadoresDAO extends JpaRepository<Avaliadores, java.lang.Str
    * @generated
    */    
   @Query("SELECT entity FROM Avaliadores entity WHERE entity.id = :id")
-  public Avaliadores findOne(@Param(value="id") java.lang.String id);
+  public Avaliadores findOne(@Param(value="id") java.lang.Integer id);
 
   /**
    * Remove a instância de Avaliadores utilizando os identificadores
@@ -42,7 +42,7 @@ public interface AvaliadoresDAO extends JpaRepository<Avaliadores, java.lang.Str
    */    
   @Modifying
   @Query("DELETE FROM Avaliadores entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.Integer id);
 
 
 
@@ -51,7 +51,7 @@ public interface AvaliadoresDAO extends JpaRepository<Avaliadores, java.lang.Str
    * @generated
    */
   @Query("SELECT entity FROM Avaliacao entity WHERE entity.avaliadores.id = :id")
-  public Page<Avaliacao> findAvaliacao(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliacao> findAvaliacao(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   
   /**
@@ -73,13 +73,13 @@ public interface AvaliadoresDAO extends JpaRepository<Avaliadores, java.lang.Str
    * @generated
    */
   @Query("SELECT entity FROM Avaliadores entity WHERE entity.tipoMinisterio.id = :id")
-  public Page<Avaliadores> findAvaliadoressByTipoMinisterio(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliadores> findAvaliadoressByTipoMinisterio(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
   /**
    * Foreign Key evento
    * @generated
    */
   @Query("SELECT entity FROM Avaliadores entity WHERE entity.evento.id = :id")
-  public Page<Avaliadores> findAvaliadoressByEvento(@Param(value="id") java.lang.String id, Pageable pageable);
+  public Page<Avaliadores> findAvaliadoressByEvento(@Param(value="id") java.lang.Integer id, Pageable pageable);
 
 }

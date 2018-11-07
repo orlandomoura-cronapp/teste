@@ -3,12 +3,6 @@
 <!-- div row para pesquisa -->
 <!--<div class="row">-->
 
-    <div ng-hide="Instrumento.inserting || Instrumento.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class="">
-        <div class="form-group">
-            <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
-            <input type="text" ng-model="vars.search" cronapp-filter="nome;" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="Instrumento" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
-        </div>
-    </div>
 
 <div data-component="crn-button" id="crn-button-564202" class="">
     <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="Instrumento.startInserting()" ng-hide="Instrumento.inserting || Instrumento.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -23,6 +17,9 @@
             <thead>
             <tr class="table-header">
                 <th class="">
+                    <div class="">Id</div>
+                </th>
+                <th class="">
                     <div class="">Nome</div>
                 </th>
                 <th class="">
@@ -35,6 +32,11 @@
             </thead>
             <tbody>
             <tr class="table-content" ng-repeat="rowData in datasource.data">
+                <td class="">
+                    <div class="">
+                                {{rowData.id  }}
+                    </div>
+                </td>
                 <td class="">
                     <div class="">
                                 {{rowData.nome  }}
@@ -118,6 +120,111 @@
         <form>
             <fieldset>
                 <!-- OneToN -->
+                <!--query filter 1toN -->
+                <!-- query filter 1toN end-->
+                <datasource filter="" name="CandidatoGrid" enabled="{{Instrumento.editing || Instrumento.inserting}}" entity="api/cronapi/crud/app.entity.Instrumento/{{Instrumento.active.id}}/relation:instrumento:Candidato" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Instrumento" dependent-lazy-post-field="instrumento"></datasource>
+                <div data-component="crn-button" class="">
+                    <button class="btn btn-primary" onclick="$('#modalCandidatoGrid').modal('show');" data-component="crn-button" ng-click="CandidatoGrid.startInserting();"><i class="fa fa-plus"></i> 
+						<span class="">{{"Add" | translate}} </span> 
+					</button>
+                </div>
+                <!--search 1toN-->
+                <!-- seach 1toN end-->
+                <div data-component="crn-textinput" id="crn-textinput-descricao">
+                    <div class="form-group">
+                        <label for="textinput-descricao" class="">
+							
+						</label>
+                        <div class="component-holder" data-component="crn-grid" id="crn-grid-CandidatoGrid">
+                            <div crn-datasource="CandidatoGrid">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                    <tr class="table-header">
+                                                <th class="">
+                                                    <div class="">
+                                                        Nome
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Dt Nascimento
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Sexo
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Comum
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Situacao
+                                                    </div>
+                                                </th>
+                                                <th class="">
+                                                    <div class="">
+                                                        Avaliacao
+                                                    </div>
+                                                </th>
+                                        <th class="">
+                                            <div class="">
+                                                {{"template.crud.actions" | translate}}
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="table-content" ng-repeat="rowData in datasource.data">
+                                                <td>
+                                                    <div>
+                                                            {{rowData.nome }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.dtNascimento }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.sexo }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.comum.nome }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.situacao.tipoSituacao }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                            {{rowData.avaliacao.metodo1 }}
+                                                    </div>
+                                                </td>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-default btn-sm" data-component="crn-button" ng-click="datasource.startEditing(rowData)" onclick="$('#modalCandidatoGrid').modal('show');" ><i class="fa fa-edit"></i></button>
+                                                <button class="btn btn-default btn-sm" data-component="crn-button" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="table-footer-controls">
+                                    <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()" content="{{&quot;template.crud.load_more&quot; | translate}}...">{{"template.crud.load_more" | translate}}...</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- OneToOne  end -->
             </fieldset>
         </form>
@@ -126,4 +233,135 @@
 
 
 <!-- OneToOne modal -->
+<div class="modal fade" id="modalCandidatoGrid">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Candidato</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group list-group-sm row">
+<!-- else of !model.hasCronappFramework() -->
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-nome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-nome">Nome</label>
+                                                <input type="text"
+                                                       ng-model="CandidatoGrid.active.nome" class="form-control"
+                                                       id="textinput-nome"
+                                                       placeholder="Nome"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-dtNascimento" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-dtNascimento">Dt Nascimento</label>
+                                                <input type="date"
+                                                       ng-model="CandidatoGrid.active.dtNascimento" class="form-control"
+                                                       id="textinput-dtNascimento"
+                                                       placeholder="Dt Nascimento"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+
+                                    <div data-component="crn-textinput"  id="crn-textinput-sexo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            <label for="textinput-sexo">Sexo</label>
+                                                <input type="text"
+                                                       ng-model="CandidatoGrid.active.sexo" class="form-control"
+                                                       id="textinput-sexo"
+                                                       placeholder="Sexo"
+                                                       mask=""
+                                                       mask-placeholder=""
+                                                    ng-required="false">
+                                        </div>
+                                    </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                                        <datasource name="ComumGridForUiSelect" entity="api/cronapi/crud/app.entity.Comum" keys="id" rows-per-page="100" lazy="true" enabled="{{Instrumento.editing || Instrumento.inserting}}" ></datasource>
+                                        <div data-component="crn-combobox-dynamic" id="crn-combobox-CandidatoGrid.active.comum" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="combobox-comum" class="">Comum</label>
+                                                <ui-select ng-model="CandidatoGrid.active.comum" crn-datasource="ComumGridForUiSelect" class="crn-select" id="combobox-comum" ng-required="false" ng-disabled="disabled" theme="bootstrap" >
+                                                    <ui-select-match placeholder="Select..." class="">
+                                                        {{$select.selected.nome}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                                        <div class="">
+                                                            {{rowData.nome}}
+                                                        </div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                                        <datasource name="SituacaoGridForUiSelect" entity="api/cronapi/crud/app.entity.Situacao" keys="id" rows-per-page="100" lazy="true" enabled="{{Instrumento.editing || Instrumento.inserting}}" ></datasource>
+                                        <div data-component="crn-combobox-dynamic" id="crn-combobox-CandidatoGrid.active.situacao" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="combobox-situacao" class="">Situacao</label>
+                                                <ui-select ng-model="CandidatoGrid.active.situacao" crn-datasource="SituacaoGridForUiSelect" class="crn-select" id="combobox-situacao" ng-required="false" ng-disabled="disabled" theme="bootstrap" >
+                                                    <ui-select-match placeholder="Select..." class="">
+                                                        {{$select.selected.tipoSituacao}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                                        <div class="">
+                                                            {{rowData.tipoSituacao}}
+                                                        </div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+<!-- else of !model.hasCronappFramework() -->
+                                        <datasource name="AvaliacaoGridForUiSelect" entity="api/cronapi/crud/app.entity.Avaliacao" keys="id" rows-per-page="100" lazy="true" enabled="{{Instrumento.editing || Instrumento.inserting}}" ></datasource>
+                                        <div data-component="crn-combobox-dynamic" id="crn-combobox-CandidatoGrid.active.avaliacao" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="combobox-avaliacao" class="">Avaliacao</label>
+                                                <ui-select ng-model="CandidatoGrid.active.avaliacao" crn-datasource="AvaliacaoGridForUiSelect" class="crn-select" id="combobox-avaliacao" ng-required="false" ng-disabled="disabled" theme="bootstrap" >
+                                                    <ui-select-match placeholder="Select..." class="">
+                                                        {{$select.selected.metodo1}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                                        <div class="">
+                                                            {{rowData.metodo1}}
+                                                        </div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                             <!-- end if !model.hasCronappFramework() -->
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-component="crn-button" ng-click="CandidatoGrid.post();" onclick="(!CandidatoGrid.missingRequiredField()?$('#modalCandidatoGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
+                    <button type="button" class="btn btn-default" data-component="crn-button" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- OneToOne modal end-->

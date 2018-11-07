@@ -20,13 +20,14 @@
       "restPath": "/api/rest",
       "visionLikePackage": false,
       "chkApi": false,
-      "attrs": {},
       "restSecurity": {
         "get": "authenticated",
         "post": "authenticated",
         "put": "authenticated",
         "delete": "authenticated"
-      }
+      },
+      "generationType": "drop-and-create-tables",
+      "attrs": {}
     },
     {
       "type": "uml.Class",
@@ -37,12 +38,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 351,
-        "y": 86
+        "x": 305,
+        "y": 35
       },
       "size": {
-        "width": 150.546875,
-        "height": 107.85416793823242
+        "width": 150.5625,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "isRest": true,
@@ -135,7 +136,7 @@
           "text": "id\nuser\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 56.734375,
+          "ref-x": 56.15625,
           "font-size": 11,
           "text": "java.lang.String\nUser\n"
         },
@@ -163,12 +164,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 86,
-        "y": 62
+        "x": 48,
+        "y": 27
       },
       "size": {
-        "width": 175.875,
-        "height": 162.1875
+        "width": 177.09375,
+        "height": 162.1953125
       },
       "angle": 0,
       "isRest": true,
@@ -343,10 +344,10 @@
       "role": "Class",
       "restPath": "",
       "restSecurity": {
-        "get": "Administrators",
         "post": "Administrators",
-        "put": "Administrators",
-        "delete": "Administrators"
+        "get": "Public",
+        "delete": "Administrators",
+        "put": "Administrators"
       },
       "attrs": {
         "rect": {
@@ -376,7 +377,7 @@
           "text": "email\nname\nid\nlogin\npicture\npassword\ntheme\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 82.0625,
+          "ref-x": 82.6875,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\n"
         },
@@ -438,7 +439,7 @@
       "type": "uml.Class",
       "name": "Candidato",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "nome:java.lang.String",
         "dtNascimento:java.util.Date",
         "sexo:java.lang.String",
@@ -449,12 +450,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 155,
-        "y": 311
+        "x": 12,
+        "y": 276
       },
       "size": {
-        "width": 195.578125,
-        "height": 173.7540512084961
+        "width": 201.875,
+        "height": 173.1212387084961
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -473,18 +474,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -567,15 +568,19 @@
           "name": "instrumento",
           "type": "Instrumento",
           "dbName": "fk_instrumento",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -586,15 +591,19 @@
           "name": "comum",
           "type": "Comum",
           "dbName": "fk_comum",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -605,15 +614,19 @@
           "name": "situacao",
           "type": "Situacao",
           "dbName": "fk_situacao",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -624,15 +637,19 @@
           "name": "avaliacao",
           "type": "Avaliacao",
           "dbName": "fk_avaliacao",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -670,9 +687,9 @@
           "text": "id\nnome\ndtNascimento\nsexo\ninstrumento\ncomum\nsituacao\navaliacao\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 101.375,
+          "ref-x": 101.734375,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\njava.util.Date\njava.lang.String\nInstrumento\nComum\nSituacao\nAvaliacao\n"
+          "text": "java.lang.Integer\njava.lang.String\njava.util.Date\njava.lang.String\nInstrumento\nComum\nSituacao\nAvaliacao\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -685,17 +702,20 @@
       "type": "uml.Class",
       "name": "Comum",
       "attributes": [
-        "id:java.lang.String",
-        "nome:java.lang.String"
+        "id:java.lang.Integer",
+        "nome:java.lang.String",
+        "estado:estado",
+        "cidade:cidade",
+        "bairro:bairro"
       ],
       "methods": [],
       "position": {
-        "x": 476.0000305175781,
-        "y": 322
+        "x": 252,
+        "y": 154
       },
       "size": {
-        "width": 155.84375,
-        "height": 108.49479293823242
+        "width": 170.71875,
+        "height": 141.2061004638672
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -714,18 +734,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -757,6 +777,63 @@
           "isEncryption": false,
           "referencedColumnName": "",
           "isSearchable": true
+        },
+        {
+          "name": "estado",
+          "type": "estado",
+          "dbName": "fk_estado",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "cidade",
+          "type": "cidade",
+          "dbName": "fk_cidade",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "bairro",
+          "type": "bairro",
+          "dbName": "fk_bairro",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "multitenantContext": "",
+          "pkType": "",
+          "isIgnore": false,
+          "isTransien": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
         }
       ],
       "runtimeClass": "cronos.widgets.joint.uml.Class",
@@ -771,12 +848,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 70,
+          "height": 130,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 30,
-          "transform": "translate(0,120)"
+          "transform": "translate(0,180)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -786,12 +863,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nnome\n"
+          "text": "id\nnome\nestado\ncidade\nbairro\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 61.640625,
+          "ref-x": 69.203125,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\n"
+          "text": "java.lang.Integer\njava.lang.String\nestado\ncidade\nbairro\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -804,18 +881,18 @@
       "type": "uml.Class",
       "name": "Instrumento",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "nome:java.lang.String",
         "categoriaInstrumento:CategoriaInstrumento"
       ],
       "methods": [],
       "position": {
-        "x": 648,
+        "x": 648.0000610351562,
         "y": 93
       },
       "size": {
-        "width": 261.609375,
-        "height": 119.29871368408203
+        "width": 262.109375,
+        "height": 118.66590118408203
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -834,18 +911,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -882,15 +959,19 @@
           "name": "categoriaInstrumento",
           "type": "CategoriaInstrumento",
           "dbName": "fk_categoriaInstrumento",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -928,9 +1009,9 @@
           "text": "id\nnome\ncategoriaInstrumento\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 137.453125,
+          "ref-x": 137.78125,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\nCategoriaInstrumento\n"
+          "text": "java.lang.Integer\njava.lang.String\nCategoriaInstrumento\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -948,12 +1029,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 965,
-        "y": 104.00000762939453
+        "x": 965.0001220703125,
+        "y": 104.00003051757812
       },
       "size": {
-        "width": 177.09375,
-        "height": 108.49479293823242
+        "width": 176.015625,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -977,13 +1058,13 @@
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1047,7 +1128,7 @@
           "text": "id\ntipo\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 82.890625,
+          "ref-x": 81.609375,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\n"
         },
@@ -1062,17 +1143,17 @@
       "type": "uml.Class",
       "name": "Situacao",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "tipoSituacao:java.lang.String"
       ],
       "methods": [],
       "position": {
-        "x": 24,
-        "y": 577
+        "x": 23,
+        "y": 578.0000610351562
       },
       "size": {
-        "width": 190.125,
-        "height": 108.49479293823242
+        "width": 196.28125,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1091,18 +1172,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1166,9 +1247,9 @@
           "text": "id\ntipoSituacao\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 95.921875,
+          "ref-x": 96.140625,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\n"
+          "text": "java.lang.Integer\njava.lang.String\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1181,17 +1262,17 @@
       "type": "uml.Class",
       "name": "TipoMinisterio",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "nome:java.lang.String"
       ],
       "methods": [],
       "position": {
-        "x": 1056,
-        "y": 517
+        "x": 1189,
+        "y": 421
       },
       "size": {
-        "width": 155.84375,
-        "height": 108.49479293823242
+        "width": 162.171875,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1210,18 +1291,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1285,9 +1366,9 @@
           "text": "id\nnome\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 61.640625,
+          "ref-x": 62.03125,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\n"
+          "text": "java.lang.Integer\njava.lang.String\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1300,19 +1381,19 @@
       "type": "uml.Class",
       "name": "Avaliadores",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "nome:java.lang.String",
         "tipoMinisterio:TipoMinisterio",
         "evento:Evento"
       ],
       "methods": [],
       "position": {
-        "x": 696,
-        "y": 469
+        "x": 925,
+        "y": 432
       },
       "size": {
-        "width": 194.375,
-        "height": 130.14392852783203
+        "width": 200.53125,
+        "height": 129.51110076904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1331,18 +1412,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1379,15 +1460,19 @@
           "name": "tipoMinisterio",
           "type": "TipoMinisterio",
           "dbName": "fk_tipoMinisterio",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -1398,15 +1483,19 @@
           "name": "evento",
           "type": "Evento",
           "dbName": "fk_evento",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -1444,9 +1533,9 @@
           "text": "id\nnome\ntipoMinisterio\nevento\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 100.171875,
+          "ref-x": 100.390625,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\nTipoMinisterio\nEvento\n"
+          "text": "java.lang.Integer\njava.lang.String\nTipoMinisterio\nEvento\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1459,19 +1548,19 @@
       "type": "uml.Class",
       "name": "MinisterioPalavra",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "nome:java.lang.String",
         "tipoMinisterio:TipoMinisterio",
         "evento:Evento"
       ],
       "methods": [],
       "position": {
-        "x": 702.0000610351562,
-        "y": 679
+        "x": 1124,
+        "y": 674
       },
       "size": {
-        "width": 194.375,
-        "height": 130.14391326904297
+        "width": 200.53125,
+        "height": 129.51110076904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1490,18 +1579,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1538,15 +1627,19 @@
           "name": "tipoMinisterio",
           "type": "TipoMinisterio",
           "dbName": "fk_tipoMinisterio",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -1557,15 +1650,19 @@
           "name": "evento",
           "type": "Evento",
           "dbName": "fk_evento",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -1603,9 +1700,9 @@
           "text": "id\nnome\ntipoMinisterio\nevento\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 100.171875,
+          "ref-x": 100.390625,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\nTipoMinisterio\nEvento\n"
+          "text": "java.lang.Integer\njava.lang.String\nTipoMinisterio\nEvento\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1618,7 +1715,7 @@
       "type": "uml.Class",
       "name": "TipoAvaliacao",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "nome:java.lang.String"
       ],
       "methods": [],
@@ -1627,8 +1724,8 @@
         "y": 746
       },
       "size": {
-        "width": 155.84375,
-        "height": 108.49479293823242
+        "width": 162.171875,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1647,18 +1744,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1722,9 +1819,9 @@
           "text": "id\nnome\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 61.640625,
+          "ref-x": 62.03125,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\n"
+          "text": "java.lang.Integer\njava.lang.String\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1737,7 +1834,7 @@
       "type": "uml.Class",
       "name": "Avaliacao",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "metodo1:java.lang.String",
         "metodo2:java.lang.String",
         "metodo3:java.lang.String",
@@ -1750,19 +1847,20 @@
         "conceitoMetodo:java.lang.String",
         "conceitoFinal:java.lang.String",
         "obs:java.lang.String",
-        "statusFinal:java.lang.String",
         "tipoAvaliacao:TipoAvaliacao",
         "avaliadores:Avaliadores",
-        "evento:Evento"
+        "evento:Evento",
+        "status:status",
+        "horario:java.sql.Time"
       ],
       "methods": [],
       "position": {
-        "x": 355,
-        "y": 750
+        "x": 371,
+        "y": 830.0001220703125
       },
       "size": {
-        "width": 207.234375,
-        "height": 272.38368225097656
+        "width": 215.296875,
+        "height": 283.5475311279297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1781,18 +1879,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -1806,7 +1904,7 @@
           "name": "metodo1",
           "type": "java.lang.String",
           "dbName": "metodo1",
-          "dbLength": "",
+          "dbLength": 100,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1829,7 +1927,7 @@
           "name": "metodo2",
           "type": "java.lang.String",
           "dbName": "metodo2",
-          "dbLength": "",
+          "dbLength": 100,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1852,7 +1950,7 @@
           "name": "metodo3",
           "type": "java.lang.String",
           "dbName": "metodo3",
-          "dbLength": "",
+          "dbLength": 100,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1875,7 +1973,7 @@
           "name": "metodo4",
           "type": "java.lang.String",
           "dbName": "metodo4",
-          "dbLength": "",
+          "dbLength": 100,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1898,7 +1996,7 @@
           "name": "metodo5",
           "type": "java.lang.String",
           "dbName": "metodo5",
-          "dbLength": "",
+          "dbLength": 100,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1921,7 +2019,7 @@
           "name": "hinario",
           "type": "java.lang.String",
           "dbName": "hinario",
-          "dbLength": "",
+          "dbLength": 150,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1944,7 +2042,7 @@
           "name": "solfejo",
           "type": "java.lang.String",
           "dbName": "solfejo",
-          "dbLength": "",
+          "dbLength": 100,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1967,7 +2065,7 @@
           "name": "conceitoTeoria",
           "type": "java.lang.String",
           "dbName": "conceitoTeoria",
-          "dbLength": "",
+          "dbLength": 6,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -1990,7 +2088,7 @@
           "name": "conceitoHino",
           "type": "java.lang.String",
           "dbName": "conceitoHino",
-          "dbLength": "",
+          "dbLength": 6,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -2013,7 +2111,7 @@
           "name": "conceitoMetodo",
           "type": "java.lang.String",
           "dbName": "conceitoMetodo",
-          "dbLength": "",
+          "dbLength": 6,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -2036,7 +2134,7 @@
           "name": "conceitoFinal",
           "type": "java.lang.String",
           "dbName": "conceitoFinal",
-          "dbLength": "",
+          "dbLength": 6,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
@@ -2059,34 +2157,11 @@
           "name": "obs",
           "type": "java.lang.String",
           "dbName": "obs",
-          "dbLength": "",
+          "dbLength": 200,
           "dbPrecision": "",
           "dbScale": "",
           "dbDefaultValue": "",
           "label": "Obs",
-          "mask": "",
-          "isPrimaryKey": false,
-          "isUniqueKey": false,
-          "isNullable": true,
-          "pkType": "",
-          "multitenantContext": "",
-          "jsonIgnore": false,
-          "isTransient": false,
-          "isInsertable": true,
-          "isUpdatable": true,
-          "isEncryption": false,
-          "referencedColumnName": "",
-          "isSearchable": false
-        },
-        {
-          "name": "statusFinal",
-          "type": "java.lang.String",
-          "dbName": "statusFinal",
-          "dbLength": "",
-          "dbPrecision": "",
-          "dbScale": "",
-          "dbDefaultValue": "",
-          "label": "Status Final",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
@@ -2169,6 +2244,52 @@
           "isEncryption": false,
           "referencedColumnName": "",
           "isSearchable": false
+        },
+        {
+          "name": "status",
+          "type": "status",
+          "dbName": "fk_status",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "horario",
+          "type": "java.sql.Time",
+          "dbName": "horario",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Horario",
+          "mask": "HH:mm:ss",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
         }
       ],
       "runtimeClass": "cronos.widgets.joint.uml.Class",
@@ -2183,12 +2304,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 370,
+          "height": 390,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 30,
-          "transform": "translate(0,420)"
+          "transform": "translate(0,440)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -2198,12 +2319,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nmetodo1\nmetodo2\nmetodo3\nmetodo4\nmetodo5\nhinario\nsolfejo\nconceitoTeoria\nconceitoHino\nconceitoMetodo\nconceitoFinal\nobs\nstatusFinal\ntipoAvaliacao\navaliadores\nevento\n"
+          "text": "id\nmetodo1\nmetodo2\nmetodo3\nmetodo4\nmetodo5\nhinario\nsolfejo\nconceitoTeoria\nconceitoHino\nconceitoMetodo\nconceitoFinal\nobs\ntipoAvaliacao\navaliadores\nevento\nstatus\nhorario\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 113.03125,
+          "ref-x": 113.78125,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\nTipoAvaliacao\nAvaliadores\nEvento\n"
+          "text": "java.lang.Integer\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\nTipoAvaliacao\nAvaliadores\nEvento\nstatus\njava.sql.Time\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -2216,18 +2337,20 @@
       "type": "uml.Class",
       "name": "Evento",
       "attributes": [
-        "id:java.lang.String",
+        "id:java.lang.Integer",
         "data:java.util.Date",
-        "comum:Comum"
+        "comum:Comum",
+        "candidato:Candidato",
+        "horario:java.sql.Time"
       ],
       "methods": [],
       "position": {
-        "x": 411.0000305175781,
-        "y": 493
+        "x": 375.0000915527344,
+        "y": 422
       },
       "size": {
-        "width": 165.09375,
-        "height": 119.29871368408203
+        "width": 185.375,
+        "height": 141.2061004638672
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2246,18 +2369,18 @@
       "fields": [
         {
           "name": "id",
-          "type": "java.lang.String",
+          "type": "java.lang.Integer",
           "dbName": "id",
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "Identity",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -2294,15 +2417,65 @@
           "name": "comum",
           "type": "Comum",
           "dbName": "fk_comum",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
           "label": "",
           "mask": "",
           "isPrimaryKey": false,
           "isUniqueKey": false,
           "isNullable": true,
-          "multitenantContext": "",
           "pkType": "",
-          "isIgnore": false,
-          "isTransien": false,
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "candidato",
+          "type": "Candidato",
+          "dbName": "fk_candidato",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "horario",
+          "type": "java.sql.Time",
+          "dbName": "horario",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Horario",
+          "mask": "HH:mm",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
           "isInsertable": true,
           "isUpdatable": true,
           "isEncryption": false,
@@ -2322,12 +2495,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 90,
+          "height": 130,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 30,
-          "transform": "translate(0,140)"
+          "transform": "translate(0,180)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -2337,12 +2510,12 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\ndata\ncomum\n"
+          "text": "id\ndata\ncomum\ncandidato\nhorario\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 70.890625,
+          "ref-x": 83.859375,
           "font-size": 11,
-          "text": "java.lang.String\njava.util.Date\nComum\n"
+          "text": "java.lang.Integer\njava.util.Date\nComum\nCandidato\njava.sql.Time\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -2426,6 +2599,18 @@
         }
       ],
       "z": 24,
+      "previous_source": {
+        "id": "8f6bd56f-3788-480f-8058-2b7b06857cf7"
+      },
+      "previous_target": {
+        "id": "5cdb607a-3e42-401b-9be0-0aaa83f1e925"
+      },
+      "vertices": [
+        {
+          "x": 252,
+          "y": 147
+        }
+      ],
       "attrs": {
         ".marker-target": {
           "d": "",
@@ -2434,6 +2619,10 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
         }
       }
     },
@@ -2555,6 +2744,18 @@
         }
       ],
       "z": 27,
+      "previous_source": {
+        "id": "47d3cff4-a9ee-404c-b32a-db395dda5500"
+      },
+      "previous_target": {
+        "id": "63865951-a837-4892-93f9-e11b4b9d27ba"
+      },
+      "vertices": [
+        {
+          "x": 284,
+          "y": 895
+        }
+      ],
       "attrs": {
         ".marker-target": {
           "d": "",
@@ -2563,6 +2764,10 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
         }
       }
     },
@@ -2598,6 +2803,18 @@
         }
       ],
       "z": 28,
+      "previous_source": {
+        "id": "f5ab67e2-0d6a-4fb8-95ab-779bdb5bd144"
+      },
+      "previous_target": {
+        "id": "63865951-a837-4892-93f9-e11b4b9d27ba"
+      },
+      "vertices": [
+        {
+          "x": 737,
+          "y": 710
+        }
+      ],
       "attrs": {
         ".marker-target": {
           "d": "",
@@ -2606,6 +2823,10 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
         }
       }
     },
@@ -2641,6 +2862,22 @@
         }
       ],
       "z": 29,
+      "previous_source": {
+        "id": "5cdb607a-3e42-401b-9be0-0aaa83f1e925"
+      },
+      "previous_target": {
+        "id": "63865951-a837-4892-93f9-e11b4b9d27ba"
+      },
+      "vertices": [
+        {
+          "x": 253,
+          "y": 556
+        },
+        {
+          "x": 324,
+          "y": 849
+        }
+      ],
       "attrs": {
         ".marker-target": {
           "d": "",
@@ -2649,6 +2886,10 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
         }
       }
     },
@@ -2770,6 +3011,18 @@
         }
       ],
       "z": 32,
+      "previous_source": {
+        "id": "3f2efcdb-4bae-4a69-bca1-f7a76779948c"
+      },
+      "previous_target": {
+        "id": "63865951-a837-4892-93f9-e11b4b9d27ba"
+      },
+      "vertices": [
+        {
+          "x": 378,
+          "y": 783
+        }
+      ],
       "attrs": {
         ".marker-target": {
           "d": "",
@@ -2778,6 +3031,10 @@
         ".marker-source": {
           "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
           "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
         }
       }
     },
@@ -2912,22 +3169,25 @@
     },
     {
       "type": "uml.Class",
-      "name": "Class1",
-      "attributes": [],
+      "name": "estado",
+      "attributes": [
+        "id:java.lang.Integer",
+        "estado:java.lang.String"
+      ],
       "methods": [],
       "position": {
-        "x": 753,
-        "y": 289
+        "x": 1102,
+        "y": 256
       },
       "size": {
-        "width": 89.6875,
-        "height": 66.2428970336914
+        "width": 167.6875,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
       "multitenantContextIgnoreEntities": "",
       "role": "Auto",
-      "queries": null,
+      "queries": [],
       "tableName": null,
       "realName": "",
       "tableScheme": null,
@@ -2937,36 +3197,87 @@
       "restSecurity": null,
       "restPath": "",
       "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac",
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.Integer",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "Identity",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "estado",
+          "type": "java.lang.String",
+          "dbName": "estado",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Estado",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": true,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": true
+        }
+      ],
       "runtimeClass": "cronos.widgets.joint.uml.Class",
       "z": 36,
       "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
         ".uml-class-name-rect": {
           "height": 50,
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 30,
+          "height": 70,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 30,
-          "transform": "translate(0,80)"
+          "transform": "translate(0,120)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
           "font-size": 12,
-          "text": "Class1",
+          "text": "estado",
           "font-weight": "bold"
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": ""
+          "text": "id\nestado\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 72.6875,
+          "ref-x": 67.546875,
           "font-size": 11,
-          "text": ""
+          "text": "java.lang.Integer\njava.lang.String\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -2977,22 +3288,26 @@
     },
     {
       "type": "uml.Class",
-      "name": "Class2",
-      "attributes": [],
+      "name": "cidade",
+      "attributes": [
+        "id:java.lang.Integer",
+        "cidade:java.lang.String",
+        "estado:estado"
+      ],
       "methods": [],
       "position": {
-        "x": 894,
-        "y": 283
+        "x": 860.0001220703125,
+        "y": 269
       },
       "size": {
-        "width": 90.15625,
-        "height": 65.08664798736572
+        "width": 167.6875,
+        "height": 118.66590118408203
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
       "multitenantContextIgnoreEntities": "",
       "role": "Auto",
-      "queries": null,
+      "queries": [],
       "tableName": null,
       "realName": "",
       "tableScheme": null,
@@ -3002,7 +3317,77 @@
       "restSecurity": null,
       "restPath": "",
       "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8",
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.Integer",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "Identity",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "cidade",
+          "type": "java.lang.String",
+          "dbName": "cidade",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Cidade",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": true
+        },
+        {
+          "name": "estado",
+          "type": "estado",
+          "dbName": "fk_estado",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
       "runtimeClass": "cronos.widgets.joint.uml.Class",
       "z": 37,
       "attrs": {
@@ -3015,32 +3400,2402 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 30,
+          "height": 90,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
           "height": 30,
-          "transform": "translate(0,80)"
+          "transform": "translate(0,140)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
           "font-size": 12,
-          "text": "Class2",
+          "text": "cidade",
           "font-weight": "bold"
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": ""
+          "text": "id\ncidade\nestado\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 73.15625,
+          "ref-x": 67.546875,
           "font-size": 11,
-          "text": ""
+          "text": "java.lang.Integer\njava.lang.String\nestado\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
           "font-size": 11,
           "text": ""
+        }
+      }
+    },
+    {
+      "type": "uml.Class",
+      "name": "bairro",
+      "attributes": [
+        "id:java.lang.Integer",
+        "bairro:java.lang.String",
+        "cidade:cidade"
+      ],
+      "methods": [],
+      "position": {
+        "x": 615,
+        "y": 288
+      },
+      "size": {
+        "width": 167.0625,
+        "height": 118.66590118408203
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "queries": [],
+      "tableName": null,
+      "realName": "",
+      "tableScheme": null,
+      "generateView": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "81b80d35-180b-4242-87e3-8eb3608dd847",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.Integer",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "Identity",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "bairro",
+          "type": "java.lang.String",
+          "dbName": "bairro",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Bairro",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": true,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": true
+        },
+        {
+          "name": "cidade",
+          "type": "cidade",
+          "dbName": "fk_cidade",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 38,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 90,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 30,
+          "transform": "translate(0,140)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "bairro",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": "id\nbairro\ncidade\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 66.921875,
+          "font-size": 11,
+          "text": "java.lang.Integer\njava.lang.String\ncidade\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": ""
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "estado:target"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "48a0e42c-6de1-4e58-9fe6-aeae97603681",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8"
+      },
+      "source": {
+        "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 39,
+      "previous_source": {
+        "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac"
+      },
+      "previous_target": {
+        "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8"
+      },
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "cidade:target"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "240a10cb-9344-46fe-a3fa-8329efeaa03d",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "81b80d35-180b-4242-87e3-8eb3608dd847"
+      },
+      "source": {
+        "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 40,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Class",
+      "name": "status",
+      "attributes": [
+        "id:java.lang.Integer",
+        "status:java.lang.String"
+      ],
+      "methods": [],
+      "position": {
+        "x": 79,
+        "y": 934
+      },
+      "size": {
+        "width": 163.515625,
+        "height": 107.86198043823242
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "queries": [],
+      "tableName": null,
+      "realName": "",
+      "tableScheme": null,
+      "generateView": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "c1f3dd0d-9b1c-4058-89e7-68873af83f21",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.Integer",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "Identity",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "status",
+          "type": "java.lang.String",
+          "dbName": "status",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Status",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": true,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 41,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 70,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 30,
+          "transform": "translate(0,120)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "status",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": "id\nstatus\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 63.375,
+          "font-size": 11,
+          "text": "java.lang.Integer\njava.lang.String\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": ""
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "status:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "74f98040-5310-4ff3-986e-1edf0c4f0c8d",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "c1f3dd0d-9b1c-4058-89e7-68873af83f21"
+      },
+      "source": {
+        "id": "63865951-a837-4892-93f9-e11b4b9d27ba"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 42,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "estado:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "134cc86d-5362-499c-9109-3259ae4b95cc",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac"
+      },
+      "source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 43,
+      "previous_source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "previous_target": {
+        "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac"
+      },
+      "vertices": [
+        {
+          "x": 1017,
+          "y": 241
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "cidade:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "db7cbbd6-4267-4739-bfa7-4d1cb6c5962e",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8"
+      },
+      "source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 44,
+      "previous_source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "previous_target": {
+        "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8"
+      },
+      "vertices": [
+        {
+          "x": 806,
+          "y": 277
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "bairro:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "4a5b8c42-13aa-48d3-ac79-c2c84aa785cc",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "81b80d35-180b-4242-87e3-8eb3608dd847"
+      },
+      "source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 45,
+      "previous_source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "previous_target": {
+        "id": "81b80d35-180b-4242-87e3-8eb3608dd847"
+      },
+      "vertices": [
+        {
+          "x": 480,
+          "y": 340
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Class",
+      "name": "ensaio",
+      "attributes": [
+        "id:java.lang.Integer",
+        "data:java.lang.String",
+        "candidato:Candidato",
+        "estado:estado",
+        "cidade:cidade",
+        "bairro:bairro",
+        "hinosEassuntosTratados:java.lang.String",
+        "horario:java.sql.Time"
+      ],
+      "methods": [],
+      "position": {
+        "x": 468,
+        "y": 573.0000610351562
+      },
+      "size": {
+        "width": 257.46875,
+        "height": 173.9415512084961
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "queries": [],
+      "tableName": null,
+      "realName": "",
+      "tableScheme": null,
+      "generateView": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.Integer",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "Identity",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "data",
+          "type": "java.lang.String",
+          "dbName": "data",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Data",
+          "mask": "DD/MM/YYYY",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "candidato",
+          "type": "Candidato",
+          "dbName": "fk_candidato",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "estado",
+          "type": "estado",
+          "dbName": "fk_estado",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "cidade",
+          "type": "cidade",
+          "dbName": "fk_cidade",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "bairro",
+          "type": "bairro",
+          "dbName": "fk_bairro",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "hinosEassuntosTratados",
+          "type": "java.lang.String",
+          "dbName": "hinosEassuntosTratados",
+          "dbLength": 500,
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "hinos E Assuntos Tratados",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "horario",
+          "type": "java.sql.Time",
+          "dbName": "horario",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Horario",
+          "mask": "HH:mm:ss",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 46,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 190,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 30,
+          "transform": "translate(0,240)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "ensaio",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": "id\ndata\ncandidato\nestado\ncidade\nbairro\nhinosEassuntosTratados\nhorario\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 155.953125,
+          "font-size": 11,
+          "text": "java.lang.Integer\njava.lang.String\nCandidato\nestado\ncidade\nbairro\njava.lang.String\njava.sql.Time\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": ""
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "candidato:target"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "9cdb530a-f4ec-4013-8e76-809705c021aa",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "source": {
+        "id": "5cdb607a-3e42-401b-9be0-0aaa83f1e925"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 47,
+      "previous_source": {
+        "id": "5cdb607a-3e42-401b-9be0-0aaa83f1e925"
+      },
+      "previous_target": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "vertices": [
+        {
+          "x": 402,
+          "y": 639
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "estado:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "dbd8154f-5e09-431a-8fa5-1b0f4e5cc8d3",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac"
+      },
+      "source": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 48,
+      "previous_source": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "previous_target": {
+        "id": "ef9aeee7-466b-412a-8418-9773fc73f1ac"
+      },
+      "vertices": [
+        {
+          "x": 922,
+          "y": 418
+        },
+        {
+          "x": 1045,
+          "y": 412
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "cidade:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "5adcc903-479d-4282-8fd9-676156650418",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "2c2f2762-b5f3-417d-8d5e-a045cfbe8cc8"
+      },
+      "source": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 49,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "bairro:source"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "e67116f8-b1d3-4cdb-aeb4-7d6c17accf8c",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToOne",
+      "target": {
+        "id": "81b80d35-180b-4242-87e3-8eb3608dd847"
+      },
+      "source": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "1",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 50,
+      "previous_source": {
+        "id": "537fa0b0-2e11-4596-afc6-1ba5051b8b55"
+      },
+      "previous_target": {
+        "id": "81b80d35-180b-4242-87e3-8eb3608dd847"
+      },
+      "vertices": [
+        {
+          "x": 642,
+          "y": 462
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "candidato:target"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "0e7fe70a-f89c-430e-badc-82b557b35520",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "3f2efcdb-4bae-4a69-bca1-f7a76779948c"
+      },
+      "source": {
+        "id": "5cdb607a-3e42-401b-9be0-0aaa83f1e925"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 51,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Class",
+      "name": "ensaioRegional",
+      "attributes": [
+        "id:java.lang.Integer",
+        "data:java.lang.Integer",
+        "fundoMusical:java.lang.Integer",
+        "palavra:java.lang.Integer",
+        "atendente:java.lang.Integer",
+        "regenteUm:java.lang.Integer",
+        "regenteDois:java.lang.Integer",
+        "violinos:java.lang.Integer",
+        "violas:java.lang.Integer",
+        "violoncelos:java.lang.Integer",
+        "acordeons:java.lang.Integer",
+        "flautas:java.lang.Integer",
+        "clarinetas:java.lang.Integer",
+        "clarones:java.lang.Integer",
+        "oboes:java.lang.Integer",
+        "fagotes:java.lang.Integer",
+        "saxSoprano:java.lang.Integer",
+        "saxSopranoCurvo:java.lang.Integer",
+        "saxAlto:java.lang.Integer",
+        "saxTenor:java.lang.Integer",
+        "saxBaritono:java.lang.Integer",
+        "saxBaixo:java.lang.Integer",
+        "saxHorns:java.lang.Integer",
+        "trompetes:java.lang.Integer",
+        "cornets:java.lang.Integer",
+        "pockets:java.lang.Integer",
+        "flugelhorn:java.lang.Integer",
+        "trompas:java.lang.Integer",
+        "trombones:java.lang.Integer",
+        "trombonitos:java.lang.Integer",
+        "baritonoVertical:java.lang.Integer",
+        "bombardinos:java.lang.Integer",
+        "bombardao:java.lang.Integer",
+        "tubaSinfonica:java.lang.Integer",
+        "anciaos:java.lang.Integer",
+        "diaconos:java.lang.Integer",
+        "coop:java.lang.Integer",
+        "coopJovens:java.lang.Integer",
+        "encLocais:java.lang.String",
+        "encRegionais:java.lang.Integer",
+        "examinadoras:java.lang.Integer",
+        "instrutores:java.lang.Integer",
+        "instrutoras:java.lang.Integer",
+        "organistas:java.lang.Integer",
+        "comum:Comum",
+        "hinosEnsaiados:java.lang.String",
+        "horario:java.sql.Time"
+      ],
+      "methods": [],
+      "position": {
+        "x": 812,
+        "y": 823
+      },
+      "size": {
+        "width": 225.671875,
+        "height": 602.2537231445312
+      },
+      "angle": 0,
+      "multitenantContextJsonIgnore": "false",
+      "multitenantContextIgnoreEntities": "",
+      "role": "Auto",
+      "queries": [],
+      "tableName": null,
+      "realName": "",
+      "tableScheme": null,
+      "generateView": "Auto",
+      "isRest": "true",
+      "multitenantContext": "",
+      "restSecurity": null,
+      "restPath": "",
+      "id": "ab0796a0-40df-42e9-8106-66626ca6ea64",
+      "fields": [
+        {
+          "name": "id",
+          "type": "java.lang.Integer",
+          "dbName": "id",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Id",
+          "mask": "",
+          "isPrimaryKey": true,
+          "isUniqueKey": false,
+          "isNullable": false,
+          "pkType": "Identity",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "data",
+          "type": "java.lang.Integer",
+          "dbName": "data",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Data",
+          "mask": "DD/MM/YYYY",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "fundoMusical",
+          "type": "java.lang.Integer",
+          "dbName": "fundoMusical",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Fundo Musical",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "palavra",
+          "type": "java.lang.Integer",
+          "dbName": "palavra",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Palavra",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "atendente",
+          "type": "java.lang.Integer",
+          "dbName": "atendente",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Atendente",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "regenteUm",
+          "type": "java.lang.Integer",
+          "dbName": "regenteUm",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Regente Um",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "regenteDois",
+          "type": "java.lang.Integer",
+          "dbName": "regenteDois",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Regente Dois",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "violinos",
+          "type": "java.lang.Integer",
+          "dbName": "violino",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Violinos",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "violas",
+          "type": "java.lang.Integer",
+          "dbName": "viola",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Violas",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "violoncelos",
+          "type": "java.lang.Integer",
+          "dbName": "violoncelos",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Violoncelos",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "acordeons",
+          "type": "java.lang.Integer",
+          "dbName": "acordeons",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Acordeons",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "flautas",
+          "type": "java.lang.Integer",
+          "dbName": "flautas",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Flautas",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "clarinetas",
+          "type": "java.lang.Integer",
+          "dbName": "clarinetas",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Clarinetas",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "clarones",
+          "type": "java.lang.Integer",
+          "dbName": "clarones",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Clarones",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "oboes",
+          "type": "java.lang.Integer",
+          "dbName": "oboes",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Oboés",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "fagotes",
+          "type": "java.lang.Integer",
+          "dbName": "fagotes",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Fagotes",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxSoprano",
+          "type": "java.lang.Integer",
+          "dbName": "saxSoprano",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Soprano",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxSopranoCurvo",
+          "type": "java.lang.Integer",
+          "dbName": "saxSopranoCurvo",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Soprano Curvo",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxAlto",
+          "type": "java.lang.Integer",
+          "dbName": "saxAlto",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Alto",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxTenor",
+          "type": "java.lang.Integer",
+          "dbName": "saxTenor",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Tenor",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxBaritono",
+          "type": "java.lang.Integer",
+          "dbName": "saxBaritono",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Barítono",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxBaixo",
+          "type": "java.lang.Integer",
+          "dbName": "saxBaixo",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Baixo",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "saxHorns",
+          "type": "java.lang.Integer",
+          "dbName": "saxHorns",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Sax Horns",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "trompetes",
+          "type": "java.lang.Integer",
+          "dbName": "trompetes",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Trompetes",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "cornets",
+          "type": "java.lang.Integer",
+          "dbName": "cornets",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Cornets",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "pockets",
+          "type": "java.lang.Integer",
+          "dbName": "pockets",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Pockets",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "flugelhorn",
+          "type": "java.lang.Integer",
+          "dbName": "flugelhorn",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Flugelhorn",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "trompas",
+          "type": "java.lang.Integer",
+          "dbName": "trompas",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Trompas",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "trombones",
+          "type": "java.lang.Integer",
+          "dbName": "trombones",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Trombones",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "trombonitos",
+          "type": "java.lang.Integer",
+          "dbName": "trombonitos",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Trombonitos",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "baritonoVertical",
+          "type": "java.lang.Integer",
+          "dbName": "baritonoVertical",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Barítono Verticall",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "bombardinos",
+          "type": "java.lang.Integer",
+          "dbName": "bombardinos",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Bombardinos",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "bombardao",
+          "type": "java.lang.Integer",
+          "dbName": "bombardao",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Bombardão",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "tubaSinfonica",
+          "type": "java.lang.Integer",
+          "dbName": "tubaSinfonica",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Tuba Sinfônica",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "anciaos",
+          "type": "java.lang.Integer",
+          "dbName": "anciaes",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Anciãos",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "diaconos",
+          "type": "java.lang.Integer",
+          "dbName": "diaconos",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Diáconos",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "coop",
+          "type": "java.lang.Integer",
+          "dbName": "coop",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Coop",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "coopJovens",
+          "type": "java.lang.Integer",
+          "dbName": "coopJovens",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Coop Jovens",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "encLocais",
+          "type": "java.lang.String",
+          "dbName": "encLocais",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Enc Locais",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "encRegionais",
+          "type": "java.lang.Integer",
+          "dbName": "encRegionais",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Enc Regionais",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "examinadoras",
+          "type": "java.lang.Integer",
+          "dbName": "examinadoras",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Examinadoras",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "instrutores",
+          "type": "java.lang.Integer",
+          "dbName": "instrutores",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Instrutores",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "instrutoras",
+          "type": "java.lang.Integer",
+          "dbName": "instrutoras",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Instrutoras",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "organistas",
+          "type": "java.lang.Integer",
+          "dbName": "organistas",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Organistas",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "comum",
+          "type": "Comum",
+          "dbName": "fk_comum",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "hinosEnsaiados",
+          "type": "java.lang.String",
+          "dbName": "hinosEnsaiados",
+          "dbLength": 500,
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Hinos Ensaiados",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        },
+        {
+          "name": "horario",
+          "type": "java.sql.Time",
+          "dbName": "horario",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Horário",
+          "mask": "HH:mm",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
+        }
+      ],
+      "runtimeClass": "cronos.widgets.joint.uml.Class",
+      "z": 52,
+      "attrs": {
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
+        },
+        ".uml-class-name-rect": {
+          "height": 50,
+          "transform": "translate(0,0)"
+        },
+        ".uml-class-attrs-rect": {
+          "height": 970,
+          "transform": "translate(0,50)"
+        },
+        ".uml-class-methods-rect": {
+          "height": 30,
+          "transform": "translate(0,1020)"
+        },
+        ".uml-class-name-text": {
+          "fill": "#000",
+          "font-size": 12,
+          "text": "ensaioRegional",
+          "font-weight": "bold"
+        },
+        ".uml-class-attrs-text": {
+          "font-size": 11,
+          "text": "id\ndata\nfundoMusical\npalavra\natendente\nregenteUm\nregenteDois\nviolinos\nviolas\nvioloncelos\nacordeons\nflautas\nclarinetas\nclarones\noboes\nfagotes\nsaxSoprano\nsaxSopranoCurvo\nsaxAlto\nsaxTenor\nsaxBaritono\nsaxBaixo\nsaxHorns\ntrompetes\ncornets\npockets\nflugelhorn\ntrompas\ntrombones\ntrombonitos\nbaritonoVertical\nbombardinos\nbombardao\ntubaSinfonica\nanciaos\ndiaconos\ncoop\ncoopJovens\nencLocais\nencRegionais\nexaminadoras\ninstrutores\ninstrutoras\norganistas\ncomum\nhinosEnsaiados\nhorario\n"
+        },
+        ".uml-class-attrs-value": {
+          "ref-x": 124.15625,
+          "font-size": 11,
+          "text": "java.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.String\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\nComum\njava.lang.String\njava.sql.Time\n"
+        },
+        ".uml-class-methods-text": {
+          "fill": "#0066FF",
+          "font-size": 11,
+          "text": ""
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "comum:target"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "a0e46a00-b2ea-4029-81c5-b002367fd21a",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "ab0796a0-40df-42e9-8106-66626ca6ea64"
+      },
+      "source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 53,
+      "previous_source": {
+        "id": "4e0119e9-1f79-41f5-9410-7a7ec554829a"
+      },
+      "previous_target": {
+        "id": "ab0796a0-40df-42e9-8106-66626ca6ea64"
+      },
+      "vertices": [
+        {
+          "x": 299,
+          "y": 626
+        },
+        {
+          "x": 684,
+          "y": 821
+        }
+      ],
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        },
+        "rect": {
+          "stroke": "yellow",
+          "stroke-width": 2
         }
       }
     }
@@ -3061,9 +5816,13 @@
       "cells": [
         "4e0119e9-1f79-41f5-9410-7a7ec554829a",
         "d2e50f97-0b9e-4037-94ba-af64568af247",
+        "ab0796a0-40df-42e9-8106-66626ca6ea64",
         "f5ab67e2-0d6a-4fb8-95ab-779bdb5bd144",
+        "537fa0b0-2e11-4596-afc6-1ba5051b8b55",
         "5cdb607a-3e42-401b-9be0-0aaa83f1e925",
         "074bca07-25ae-4ac2-b2c7-bd9a5adc1723",
+        "81b80d35-180b-4242-87e3-8eb3608dd847",
+        "c1f3dd0d-9b1c-4058-89e7-68873af83f21",
         "550d0088-d66a-45ef-a38e-63e621a23bdd",
         "63865951-a837-4892-93f9-e11b4b9d27ba",
         "1df87f56-c5ba-47f5-8e68-82931f49b989",
